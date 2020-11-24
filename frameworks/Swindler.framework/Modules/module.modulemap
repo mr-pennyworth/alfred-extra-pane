@@ -1,0 +1,11 @@
+framework module Swindler {
+  umbrella header "Swindler.h"
+
+  export *
+  module * { export * }
+}
+
+module Swindler.Swift {
+    header "Swindler-Swift.h"
+    requires objc
+}
