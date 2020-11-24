@@ -1,0 +1,8 @@
+DerivedData
+*~
+xcuserdata/
+xcuserdata
+xcuserdata/
+*.pyc
+*.xcworkspace
+.idea

@@ -1,0 +1,372 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D01646BA255AF27A00646F0C /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01646B9255AF27A00646F0C /* utils.swift */; };
+		D03EA8D325551E0400D3656E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EA8D225551E0400D3656E /* main.swift */; };
+		D03EA8D725551E0700D3656E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03EA8D625551E0700D3656E /* Assets.xcassets */; };
+		D03EA8FA255567A300D3656E /* AlfredWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EA8F9255567A300D3656E /* AlfredWatcher.swift */; };
+		D03EA8FE255582BC00D3656E /* Swindler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03EA8FB255582BC00D3656E /* Swindler.framework */; };
+		D03EA8FF255582BC00D3656E /* Swindler.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D03EA8FB255582BC00D3656E /* Swindler.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D03EA900255582BC00D3656E /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03EA8FC255582BC00D3656E /* PromiseKit.framework */; };
+		D03EA901255582BC00D3656E /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D03EA8FC255582BC00D3656E /* PromiseKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D03EA902255582BC00D3656E /* AXSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03EA8FD255582BC00D3656E /* AXSwift.framework */; };
+		D03EA903255582BC00D3656E /* AXSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D03EA8FD255582BC00D3656E /* AXSwift.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D04F70D325586069008E17A4 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = D04F70D225586069008E17A4 /* scripts */; };
+		D04F70D5255893B3008E17A4 /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F70D4255893B3008E17A4 /* NSColorExtension.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D03EA8F22555664D00D3656E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D03EA8FF255582BC00D3656E /* Swindler.framework in Embed Frameworks */,
+				D03EA903255582BC00D3656E /* AXSwift.framework in Embed Frameworks */,
+				D03EA901255582BC00D3656E /* PromiseKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		D01646B9255AF27A00646F0C /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
+		D03EA8CF25551E0400D3656E /* AlfredExtraPane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlfredExtraPane.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D03EA8D225551E0400D3656E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		D03EA8D625551E0700D3656E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D03EA8DB25551E0700D3656E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D03EA8F9255567A300D3656E /* AlfredWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlfredWatcher.swift; sourceTree = "<group>"; };
+		D03EA8FB255582BC00D3656E /* Swindler.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swindler.framework; path = frameworks/Swindler.framework; sourceTree = "<group>"; };
+		D03EA8FC255582BC00D3656E /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = frameworks/PromiseKit.framework; sourceTree = "<group>"; };
+		D03EA8FD255582BC00D3656E /* AXSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AXSwift.framework; path = frameworks/AXSwift.framework; sourceTree = "<group>"; };
+		D04F70D225586069008E17A4 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
+		D04F70D4255893B3008E17A4 /* NSColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D03EA8CC25551E0400D3656E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D03EA8FE255582BC00D3656E /* Swindler.framework in Frameworks */,
+				D03EA902255582BC00D3656E /* AXSwift.framework in Frameworks */,
+				D03EA900255582BC00D3656E /* PromiseKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D03EA8C625551E0400D3656E = {
+			isa = PBXGroup;
+			children = (
+				D03EA8D125551E0400D3656E /* AlfredExtraPane */,
+				D03EA8D025551E0400D3656E /* Products */,
+				D03EA8EE2555664C00D3656E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D03EA8D025551E0400D3656E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D03EA8CF25551E0400D3656E /* AlfredExtraPane.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D03EA8D125551E0400D3656E /* AlfredExtraPane */ = {
+			isa = PBXGroup;
+			children = (
+				D04F70D225586069008E17A4 /* scripts */,
+				D03EA8D225551E0400D3656E /* main.swift */,
+				D03EA8F9255567A300D3656E /* AlfredWatcher.swift */,
+				D03EA8D625551E0700D3656E /* Assets.xcassets */,
+				D03EA8DB25551E0700D3656E /* Info.plist */,
+				D04F70D4255893B3008E17A4 /* NSColorExtension.swift */,
+				D01646B9255AF27A00646F0C /* utils.swift */,
+			);
+			path = AlfredExtraPane;
+			sourceTree = "<group>";
+		};
+		D03EA8EE2555664C00D3656E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D03EA8FD255582BC00D3656E /* AXSwift.framework */,
+				D03EA8FC255582BC00D3656E /* PromiseKit.framework */,
+				D03EA8FB255582BC00D3656E /* Swindler.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D03EA8CE25551E0400D3656E /* AlfredExtraPane */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D03EA8DF25551E0700D3656E /* Build configuration list for PBXNativeTarget "AlfredExtraPane" */;
+			buildPhases = (
+				D03EA8CB25551E0400D3656E /* Sources */,
+				D03EA8CC25551E0400D3656E /* Frameworks */,
+				D03EA8CD25551E0400D3656E /* Resources */,
+				D03EA8F22555664D00D3656E /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AlfredExtraPane;
+			packageProductDependencies = (
+			);
+			productName = AlfredExtraPane;
+			productReference = D03EA8CF25551E0400D3656E /* AlfredExtraPane.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D03EA8C725551E0400D3656E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1170;
+				LastUpgradeCheck = 1170;
+				ORGANIZATIONNAME = "Sujeet Gholap";
+				TargetAttributes = {
+					D03EA8CE25551E0400D3656E = {
+						CreatedOnToolsVersion = 11.7;
+					};
+				};
+			};
+			buildConfigurationList = D03EA8CA25551E0400D3656E /* Build configuration list for PBXProject "AlfredExtraPane" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D03EA8C625551E0400D3656E;
+			packageReferences = (
+			);
+			productRefGroup = D03EA8D025551E0400D3656E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D03EA8CE25551E0400D3656E /* AlfredExtraPane */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D03EA8CD25551E0400D3656E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D03EA8D725551E0700D3656E /* Assets.xcassets in Resources */,
+				D04F70D325586069008E17A4 /* scripts in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D03EA8CB25551E0400D3656E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D03EA8FA255567A300D3656E /* AlfredWatcher.swift in Sources */,
+				D03EA8D325551E0400D3656E /* main.swift in Sources */,
+				D04F70D5255893B3008E17A4 /* NSColorExtension.swift in Sources */,
+				D01646BA255AF27A00646F0C /* utils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D03EA8DD25551E0700D3656E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D03EA8DE25551E0700D3656E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		D03EA8E025551E0700D3656E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/frameworks/**";
+				INFOPLIST_FILE = AlfredExtraPane/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
+				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D03EA8E125551E0700D3656E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/frameworks/**";
+				INFOPLIST_FILE = AlfredExtraPane/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
+				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D03EA8CA25551E0400D3656E /* Build configuration list for PBXProject "AlfredExtraPane" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D03EA8DD25551E0700D3656E /* Debug */,
+				D03EA8DE25551E0700D3656E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D03EA8DF25551E0700D3656E /* Build configuration list for PBXNativeTarget "AlfredExtraPane" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D03EA8E025551E0700D3656E /* Debug */,
+				D03EA8E125551E0700D3656E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D03EA8C725551E0400D3656E /* Project object */;
+}
