@@ -1,18 +1,49 @@
-name: Build
+name: Build and Release
 
 on: push
 
 jobs:
-  build:
-    name: Build AlfredExtraPane
+  build-and-release:
+    name: Build AlfredExtraPane and release
     runs-on: macos-10.15
     steps:
+
       - name: Checkout code
         uses: actions/checkout@v2
+
       - name: Select Xcode
         run: sudo xcode-select -switch /Applications/Xcode_11.7.app
+
       - name: Xcode version
         run: /usr/bin/xcodebuild -version
+
       - name: Build App
         run: xcodebuild -project AlfredExtraPane.xcodeproj -configuration Release -scheme AlfredExtraPane -derivedDataPath DerivedData build
 
+      - name: Copy Built App
+        run: cp -r DerivedData/Build/Products/Release/AlfredExtraPane.app ./
+
+      - name: Zip App
+        run: zip -r AlfredExtraPane.app.zip AlfredExtraPane.app
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./AlfredExtraPane.app.zip
+          asset_name: AlfredExtraPane.app.zip
+          asset_content_type: application/zip
