@@ -17,6 +17,22 @@ jobs:
       - name: Xcode version
         run: /usr/bin/xcodebuild -version
 
+      - name: Get App Version
+        run: echo "APP_VERSION=$(xcodebuild -showBuildSettings | grep MARKETING_VERSION | cut -f2 -d = | tr -d '[:space:]')" >> $GITHUB_ENV
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.APP_VERSION }}
+          release_name: ${{ env.APP_VERSION }}
+          draft: false
+          prerelease: false
+
+      # If app version didn't change, the create-release thing above will fail, saving us unnecessary builds
+
       - name: Build App
         run: xcodebuild -project AlfredExtraPane.xcodeproj -configuration Release -scheme AlfredExtraPane -derivedDataPath DerivedData build
 
@@ -25,17 +41,6 @@ jobs:
 
       - name: Zip App
         run: zip -r AlfredExtraPane.app.zip AlfredExtraPane.app
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: tag-${{ github.sha }}
-          release_name: release-${{ github.sha }}
-          draft: false
-          prerelease: false
 
       - name: Upload Release Asset
         id: upload-release-asset
