@@ -1,0 +1,18 @@
+name: Build
+
+on: push
+
+jobs:
+  build:
+    name: Build AlfredExtraPane
+    runs-on: macos-10.15
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Select Xcode
+        run: sudo xcode-select -switch /Applications/Xcode_11.7.app
+      - name: Xcode version
+        run: /usr/bin/xcodebuild -version
+      - name: Build App
+        run: xcodebuild -project AlfredExtraPane.xcodeproj -configuration Release -scheme AlfredExtraPane -derivedDataPath DerivedData build
+
