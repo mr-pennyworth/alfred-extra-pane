@@ -117,6 +117,7 @@ Check out the [tutorial](#tutorial) for a quick walk-through.
 <h4> In script filters, Alfred doesn't simply show the results in the order
 they appear in the JSON, but reorders them according to its logic. How does
 the extra pane account for that? </h4>
+
 Alfred uses the `uid` in JSON to re-order the results. The pane uses
 [this algorithm][7] to mimic this re-ordering. It hasn't been thoroughly tested,
 but seems to work correctly so far.
