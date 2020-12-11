@@ -85,6 +85,7 @@ by running that piece of JXA.
 
 <h4> I want to use this in my workflow.
 How do I support various Alfred themes automatically? </h4>
+
 Alfred's themes are stored in JSON files. Here's a snippet from one such file:
 ```json
 {
@@ -97,6 +98,7 @@ Alfred's themes are stored in JSON files. Here's a snippet from one such file:
         "font" : "System Light",
         "color" : "#6E7073E5"}}}}
 ```
+
 The pane converts this into CSS variables and injects them into the HTML.
 The CSS looks like this:
 ```css
