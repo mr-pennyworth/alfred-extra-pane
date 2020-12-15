@@ -2,27 +2,10 @@
 
 import alfred
 import json
-import os
 import subprocess
 import sys
 import urllib
 import uuid
-
-
-def get_url(alfreditem):
-  url = alfreditem.get('quicklookurl', alfreditem.get('arg', ''))
-  if (url.startswith('http://') or url.startswith('https://')):
-    return url
-  elif url.endswith('.html'):
-    if url.startswith('~'):
-      return os.path.abspath(os.path.expanduser(url))
-    elif url.startswith('/'):
-      return url
-    else:
-      basedir = os.environ.get('basedir', alfred.WORKFLOW_DIR)
-      return os.path.abspath(os.path.join(basedir, url))
-  else:
-    return ''
 
 
 if __name__ == '__main__':
@@ -37,12 +20,6 @@ if __name__ == '__main__':
     - arg: the argument is passed to the script filter
   '''
   alfreditems = json.load(sys.stdin)
-  alfreditems['items'] = alfred.sort_by_knowledge(alfreditems['items'])
-
-  urls = [get_url(item) for item in alfreditems['items']]
-
-  specfilepath = '/tmp/%s' % str(uuid.uuid4())
-  with open(specfilepath, 'w') as tmpfile: json.dump(urls, tmpfile)
 
   cssfilepath = '/tmp/%s.css' % str(uuid.uuid4())
   with open(cssfilepath, 'w') as tmpfile: tmpfile.write(alfred.theme_css())
@@ -52,15 +29,8 @@ if __name__ == '__main__':
   subprocess.call([
     'open', '-g',
     'alfred-extra-pane://update?%s' % urllib.urlencode({
-      'specFile': specfilepath,
       'cssFile': cssfilepath,
-      'bkgColor': bkgColorWithoutAlpha,
-      'minHeight': alfred.window_height(9),
-      'resultHeight': alfred.result_height(),
-      'resultWidth': alfred.result_width(),
-      'resultsTopLeftX': alfred.results_top_left_x(),
-      'resultsTopLeftY': alfred.results_top_left_y(),
-      'maxVisibleResults': alfred.max_visible_results()
+      'bkgColor': bkgColorWithoutAlpha
     })
   ])
 

@@ -10,13 +10,6 @@
 		D01646BA255AF27A00646F0C /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01646B9255AF27A00646F0C /* utils.swift */; };
 		D03EA8D325551E0400D3656E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EA8D225551E0400D3656E /* main.swift */; };
 		D03EA8D725551E0700D3656E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03EA8D625551E0700D3656E /* Assets.xcassets */; };
-		D03EA8FA255567A300D3656E /* AlfredWatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EA8F9255567A300D3656E /* AlfredWatcher.swift */; };
-		D03EA8FE255582BC00D3656E /* Swindler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03EA8FB255582BC00D3656E /* Swindler.framework */; };
-		D03EA8FF255582BC00D3656E /* Swindler.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D03EA8FB255582BC00D3656E /* Swindler.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		D03EA900255582BC00D3656E /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03EA8FC255582BC00D3656E /* PromiseKit.framework */; };
-		D03EA901255582BC00D3656E /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D03EA8FC255582BC00D3656E /* PromiseKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		D03EA902255582BC00D3656E /* AXSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03EA8FD255582BC00D3656E /* AXSwift.framework */; };
-		D03EA903255582BC00D3656E /* AXSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D03EA8FD255582BC00D3656E /* AXSwift.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D04F70D325586069008E17A4 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = D04F70D225586069008E17A4 /* scripts */; };
 		D04F70D5255893B3008E17A4 /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F70D4255893B3008E17A4 /* NSColorExtension.swift */; };
 /* End PBXBuildFile section */
@@ -28,9 +21,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D03EA8FF255582BC00D3656E /* Swindler.framework in Embed Frameworks */,
-				D03EA903255582BC00D3656E /* AXSwift.framework in Embed Frameworks */,
-				D03EA901255582BC00D3656E /* PromiseKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -43,10 +33,6 @@
 		D03EA8D225551E0400D3656E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D03EA8D625551E0700D3656E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D03EA8DB25551E0700D3656E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D03EA8F9255567A300D3656E /* AlfredWatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlfredWatcher.swift; sourceTree = "<group>"; };
-		D03EA8FB255582BC00D3656E /* Swindler.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swindler.framework; path = frameworks/Swindler.framework; sourceTree = "<group>"; };
-		D03EA8FC255582BC00D3656E /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = frameworks/PromiseKit.framework; sourceTree = "<group>"; };
-		D03EA8FD255582BC00D3656E /* AXSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AXSwift.framework; path = frameworks/AXSwift.framework; sourceTree = "<group>"; };
 		D04F70D225586069008E17A4 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
 		D04F70D4255893B3008E17A4 /* NSColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,9 +42,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D03EA8FE255582BC00D3656E /* Swindler.framework in Frameworks */,
-				D03EA902255582BC00D3656E /* AXSwift.framework in Frameworks */,
-				D03EA900255582BC00D3656E /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,7 +70,6 @@
 			children = (
 				D04F70D225586069008E17A4 /* scripts */,
 				D03EA8D225551E0400D3656E /* main.swift */,
-				D03EA8F9255567A300D3656E /* AlfredWatcher.swift */,
 				D03EA8D625551E0700D3656E /* Assets.xcassets */,
 				D03EA8DB25551E0700D3656E /* Info.plist */,
 				D04F70D4255893B3008E17A4 /* NSColorExtension.swift */,
@@ -99,9 +81,6 @@
 		D03EA8EE2555664C00D3656E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D03EA8FD255582BC00D3656E /* AXSwift.framework */,
-				D03EA8FC255582BC00D3656E /* PromiseKit.framework */,
-				D03EA8FB255582BC00D3656E /* Swindler.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -181,7 +160,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D03EA8FA255567A300D3656E /* AlfredWatcher.swift in Sources */,
 				D03EA8D325551E0400D3656E /* main.swift in Sources */,
 				D04F70D5255893B3008E17A4 /* NSColorExtension.swift in Sources */,
 				D01646BA255AF27A00646F0C /* utils.swift in Sources */,

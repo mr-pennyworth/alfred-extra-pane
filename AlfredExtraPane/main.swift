@@ -1,29 +1,22 @@
 import AppKit
 import Carbon
 import Foundation
+import Quartz
 import WebKit
 
 
+typealias Dict = [String: Any]
+
 // Floating webview based on: https://github.com/Qusic/Loaf
 class AppDelegate: NSObject, NSApplicationDelegate {
-    var resultHeight: CGFloat = 0
-    var resultWidth: CGFloat = 0
-    var resultsTopLeftX: CGFloat = 0
-    var resultsTopLeftY: CGFloat = 0
-    var maxVisibleResults: Int = 9
-
-    var minHeight: CGFloat = 500
+    let minHeight: CGFloat = 500
     let maxWebviewWidth: CGFloat = 300
 
     let screen: NSScreen = NSScreen.main!
     lazy var screenWidth: CGFloat = screen.frame.width
     lazy var screenHeight: CGFloat = screen.frame.height
 
-    var urls: [URL?] = []
-    var urlIdx = 0
     var css = ""
-
-    let alfredWatcher: AlfredWatcher = AlfredWatcher()
 
     lazy var window: NSWindow = {
         let window = NSWindow(
@@ -54,69 +47,58 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let configuration = WKWebViewConfiguration()
         configuration.preferences.setValue(true, forKey: "developerExtrasEnabled")
         let webview = WKWebView(frame: .zero, configuration: configuration)
+        webview.customUserAgent = "Mozilla/5.0 (iPod; U; CPU iPhone OS 4_3_3 like Mac OS X) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5"
+        webview.customUserAgent = "Mozilla/5.0 (Linux; Android 8.0; Pixel 2 Build/OPD3.170816.012) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Mobile Safari/537.36"
         return webview
     }()
 
-    func mouseAt(x: CGFloat, y: CGFloat) {
-        let visibleResults = min(maxVisibleResults, urls.count)
 
-        let left = resultsTopLeftX
-        let right = left + resultWidth
-        let top = resultsTopLeftY
-        let bottom = top + resultHeight * CGFloat(visibleResults)
 
-        if ((left < x) && (x < right) && (top < y) && (y < bottom)) {
-            let i = Int((y - top) / resultHeight)
-            if (i != urlIdx) {
-                urlIdx = i
-                render()
+    @objc func handleAlfredNotification (notification: NSNotification) {
+      log("\(notification)")
+      let notif = notification.userInfo! as! Dict
+      let notifType = notif["announcement"] as! String
+      if (notifType == "window.hidden") {
+        self.window.orderOut(self)
+      } else if (notifType == "selection.changed") {
+        let frame = NSRectFromString(notif["windowframe"] as! String)
+        if let selection = notif["selection"] as? Dict {
+          if let url = selection["quicklookurl"] as? String {
+            if (url.starts(with: "/") && url.hasSuffix(".html")) {
+              render(URL(fileURLWithPath: url), NSRectToCGRect(frame))
+            } else if (url.hasPrefix("http://") || url.hasPrefix("https://")) {
+              render(URL(string: url), NSRectToCGRect(frame))
+            } else {
+              render(nil, nil)
             }
+          } else if let url = selection["subtext"] as? String {
+            if (url.starts(with: "/") && url.hasSuffix(".html")) {
+              render(URL(fileURLWithPath: url), NSRectToCGRect(frame))
+            } else if (url.hasPrefix("http://") || url.hasPrefix("https://")) {
+              render(URL(string: url), NSRectToCGRect(frame))
+            } else {
+              render(nil, nil)
+            }
+          } else {
+            render(nil, nil)
+          }
         }
-    }
-
-    func setUrls(_ urlListJsonString: String) {
-        self.urlIdx = 0
-        let data = Data(urlListJsonString.utf8)
-        do {
-            let array = try JSONSerialization.jsonObject(with: data) as! [String]
-            
-            // empty strings map to file URL equivalent to "./",
-            // which we later on decide to not render in render()
-            self.urls = array.map({path in
-                if (path.starts(with: "/")) {
-                    return URL(fileURLWithPath: path)
-                } else {
-                    return URL(string: path)
-                }
-            })
-            render()
-            // puzzler: why would the following cause a SEGFAULT?
-            //          that too never while running in xcode
-            // log("urls: \(self.urls)")
-        } catch {
-            log("Error: \(error)")
-        }
+      }
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        // The following mouse events take some time to start firing: why??
-        NSEvent.addGlobalMonitorForEvents(
-          matching: [NSEvent.EventTypeMask.mouseMoved],
-          handler: { (event: NSEvent) in
-              let loc = event.locationInWindow
-              self.mouseAt(x: loc.x, y: self.screenHeight - loc.y)
-          }
+        DistributedNotificationCenter.default().addObserver(
+          self,
+          selector: #selector(handleAlfredNotification),
+          name: NSNotification.Name(rawValue: "alfred.presssecretary"),
+          object: nil,
+          suspensionBehavior: .deliverImmediately
         )
 
-        window.contentView?.addSubview(webview)
-        alfredWatcher.start(
-            onAlfredWindowDestroy: {
-                self.urls = [nil]
-                self.window.orderOut(self)
-            },
-            onDownArrowPressed: self.renderNext,
-            onUpArrowPressed: self.renderPrevious
-        )
+      // let ql = QLPreviewView()
+      // ql.previewItem = NSURL(fileURLWithPath: "/Users/sujeet/Desktop/core entrance test.pdf")
+      // window.contentView?.addSubview(ql)
+      window.contentView?.addSubview(webview)
     }
 
     func showWindow(alfred: CGRect) {
@@ -130,6 +112,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 height: height),
             display: false
         )
+      // let ql = window.contentView?.subviews[0]
+      // ql?.setFrameOrigin(NSPoint(x: alfred.width, y: 0))
+      // ql?.setFrameSize(NSSize(width: webviewWidth, height: height))
         webview.setFrameOrigin(NSPoint(x: alfred.width, y: 0))
         webview.setFrameSize(NSSize(width: webviewWidth, height: height))
         window.makeKeyAndOrderFront(self)
@@ -157,40 +142,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return injectedHtmlUrl
     }
 
-    func render() {
-        if (self.urls.count == 0 || self.urls == [nil]) {
-            return
-        }
-
-        if let alfredFrame = self.alfredWatcher.alfredFrame() {
-            self.urlIdx = (self.urlIdx + self.urls.count) % self.urls.count
-            if let url = self.urls[self.urlIdx] {
-                log("Rendering URL at index: \(self.urlIdx): \(url)")
-                if (url.isFileURL) {
-                    webview.loadFileURL(
-                        injectCSS(fileUrl: url),
-                        allowingReadAccessTo: url.deletingLastPathComponent()
-                    )
-                } else {
-                    webview.load(URLRequest(url: url))
-                }
-                webview.isHidden = false
-                showWindow(alfred: alfredFrame)
+    func render(_ urlOpt: URL?, _ alfredFrameOpt: CGRect?) {
+        if let alfredFrame = alfredFrameOpt {
+          if let url = urlOpt {
+            if (url.isFileURL) {
+              webview.loadFileURL(
+                injectCSS(fileUrl: url),
+                allowingReadAccessTo: url.deletingLastPathComponent()
+              )
             } else {
-                log("Hiding as no URL was provided at index: \(self.urlIdx)")
-                webview.isHidden = true
+              webview.load(URLRequest(url: url))
             }
+            showWindow(alfred: alfredFrame)
+          } else {
+            self.window.orderOut(self)
+          }
+        } else {
+          self.window.orderOut(self)
         }
-    }
-
-    func renderNext() {
-        self.urlIdx += 1
-        self.render()
-    }
-    
-    func renderPrevious() {
-        self.urlIdx -= 1
-        self.render()
     }
 
     func application(_ application: NSApplication, open urls: [URL]) {
@@ -199,24 +168,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let param = url.queryParameters
             switch url.host {
             case "update":
-                minHeight = CGFloat(Int(param["minHeight"]!)!)
-                maxVisibleResults = Int(param["maxVisibleResults"]!)!
-                resultHeight = CGFloat(Int(param["resultHeight"]!)!)
-                resultWidth = CGFloat(Int(param["resultWidth"]!)!)
-
-                if let alfredFrame = self.alfredWatcher.alfredFrame() {
-                    resultsTopLeftX =
-                      CGFloat(Int(param["resultsTopLeftX"]!)!) + alfredFrame.minX
-                    resultsTopLeftY =
-                      CGFloat(Int(param["resultsTopLeftY"]!)!) + screenHeight - alfredFrame.maxY
-                }
-
                 window.contentView?.backgroundColor = NSColor.fromHexString(
                     hex: param["bkgColor"]!,
                     alpha: 1
                 )
                 readFile(named: param["cssFile"]!, then: { css in self.css = css })
-                readFile(named: param["specFile"]!, then: setUrls)
             default:
                 break
             }
