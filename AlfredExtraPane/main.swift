@@ -47,8 +47,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let configuration = WKWebViewConfiguration()
         configuration.preferences.setValue(true, forKey: "developerExtrasEnabled")
         let webview = WKWebView(frame: .zero, configuration: configuration)
-        webview.customUserAgent = "Mozilla/5.0 (iPod; U; CPU iPhone OS 4_3_3 like Mac OS X) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5"
-        webview.customUserAgent = "Mozilla/5.0 (Linux; Android 8.0; Pixel 2 Build/OPD3.170816.012) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Mobile Safari/537.36"
         return webview
     }()
 
