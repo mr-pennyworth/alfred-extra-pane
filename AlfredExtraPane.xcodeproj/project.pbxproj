@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		D01646BA255AF27A00646F0C /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01646B9255AF27A00646F0C /* utils.swift */; };
 		D03EA8D325551E0400D3656E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EA8D225551E0400D3656E /* main.swift */; };
 		D03EA8D725551E0700D3656E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03EA8D625551E0700D3656E /* Assets.xcassets */; };
+		D040E2422667A4FC00495B2D /* Alfred in Frameworks */ = {isa = PBXBuildFile; productRef = D040E2412667A4FC00495B2D /* Alfred */; };
 		D04F70D325586069008E17A4 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = D04F70D225586069008E17A4 /* scripts */; };
 		D04F70D5255893B3008E17A4 /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F70D4255893B3008E17A4 /* NSColorExtension.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D040E2422667A4FC00495B2D /* Alfred in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +105,7 @@
 			);
 			name = AlfredExtraPane;
 			packageProductDependencies = (
+				D040E2412667A4FC00495B2D /* Alfred */,
 			);
 			productName = AlfredExtraPane;
 			productReference = D03EA8CF25551E0400D3656E /* AlfredExtraPane.app */;
@@ -133,6 +136,7 @@
 			);
 			mainGroup = D03EA8C625551E0400D3656E;
 			packageReferences = (
+				D040E2402667A4FC00495B2D /* XCRemoteSwiftPackageReference "AlfredSwift" */,
 			);
 			productRefGroup = D03EA8D025551E0400D3656E /* Products */;
 			projectDirPath = "";
@@ -293,7 +297,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 0.1.0;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane;
@@ -313,7 +317,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 0.1.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
@@ -345,6 +349,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D040E2402667A4FC00495B2D /* XCRemoteSwiftPackageReference "AlfredSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mr-pennyworth/AlfredSwift";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D040E2412667A4FC00495B2D /* Alfred */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D040E2402667A4FC00495B2D /* XCRemoteSwiftPackageReference "AlfredSwift" */;
+			productName = Alfred;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D03EA8C725551E0400D3656E /* Project object */;
 }
