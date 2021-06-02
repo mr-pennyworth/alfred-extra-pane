@@ -1,3 +1,4 @@
+import Alfred
 import AppKit
 import Carbon
 import Foundation

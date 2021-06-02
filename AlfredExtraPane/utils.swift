@@ -1,14 +1,6 @@
+import Alfred
 import AppKit
 import Foundation
-
-func log(
-  _ message: String,
-  filename: String = #file,
-  function: String = #function,
-  line: Int = #line
-) {
-  NSLog("[\(filename.split(separator: "/").last ?? ""):\(function):\(line)] \(message)")
-}
 
 
 extension NSView {
