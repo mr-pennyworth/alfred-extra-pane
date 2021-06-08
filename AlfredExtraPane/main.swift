@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   lazy var screenWidth: CGFloat = screen.frame.width
   lazy var screenHeight: CGFloat = screen.frame.height
 
-  var css = ""
+  let css: String = Alfred.themeCSS
 
   lazy var window: NSWindow = {
     let window = NSWindow(
@@ -171,7 +171,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
           hex: param["bkgColor"]!,
           alpha: 1
         )
-        readFile(named: param["cssFile"]!, then: { css in self.css = css })
       default:
         break
       }
