@@ -120,9 +120,13 @@ class Pane {
   }
 
   func render(_ url: URL) {
-    if (url.isFileURL) {
-      let dir = url.deletingLastPathComponent()
-      webView.loadFileURL(injectCSS(url), allowingReadAccessTo: dir)
+    if url.isFileURL {
+      if url.absoluteString.hasSuffix(".html") {
+        let dir = url.deletingLastPathComponent()
+        webView.loadFileURL(injectCSS(url), allowingReadAccessTo: dir)
+      } else {
+        return
+      }
     } else {
       webView.load(URLRequest(url: url))
     }
