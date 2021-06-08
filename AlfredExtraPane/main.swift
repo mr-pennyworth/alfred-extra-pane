@@ -14,8 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var configs: [PaneConfig] = []
     if let configFilePath = configFilePath {
       configs = read(contentsOf: configFilePath) ?? []
-    }
-    if configs.isEmpty {
+    } else {
       log("Loading default catchall-config")
       configs = [defaultConfig]
     }
