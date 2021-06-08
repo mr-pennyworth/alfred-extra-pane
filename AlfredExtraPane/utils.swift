@@ -41,3 +41,27 @@ class QueryParameters {
     return queryItems.first(where: { $0.name == name })?.value
   }
 }
+
+public func read<T: Codable>(contentsOf filepath: URL) -> T? {
+  do {
+    let data = try Data(contentsOf: filepath)
+    return try JSONDecoder().decode(T.self, from: data)
+  } catch {
+    log("\(error)")
+    log("Error: Couldn't read JSON object from: \(filepath.path)")
+  }
+  return nil
+}
+
+public func write<T: Codable>(_ obj: T, to filepath: URL) {
+  let encoder = JSONEncoder()
+  encoder.outputFormatting = .prettyPrinted
+  do {
+    let data = try encoder.encode(obj)
+    try data.write(to: filepath)
+  } catch {
+    log("\(error)")
+    log("Error: Couldn't write JSON object to: \(filepath.path)")
+    log("Error: Couldn't write object: \(obj)")
+  }
+}
