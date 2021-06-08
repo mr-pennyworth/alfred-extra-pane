@@ -6,7 +6,7 @@ import Foundation
 class AppDelegate: NSObject, NSApplicationDelegate {
   let pane = Pane(
     config: PaneConfig(
-      position: .horizontal(position: .right, width: 300, minHeight: 500),
+      alignment: .horizontal(placement: .right, width: 300, minHeight: 500),
       workflowUID: "*"
     )
   )

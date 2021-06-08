@@ -7,12 +7,12 @@ enum PanePosition {
   enum HorizontalPosition: String, Codable, CodingKey { case left, right }
   enum VerticalPosition: String, Codable, CodingKey { case top, bottom }
 
-  case horizontal(position: HorizontalPosition, width: Int, minHeight: Int?)
-  case vertical(position: VerticalPosition, height: Int)
+  case horizontal(placement: HorizontalPosition, width: Int, minHeight: Int?)
+  case vertical(placement: VerticalPosition, height: Int)
 }
 
 struct PaneConfig: Codable {
-  let position: PanePosition
+  let alignment: PanePosition
   let workflowUID: String
 }
 
@@ -55,14 +55,14 @@ class Pane {
   }
 
   func width() -> CGFloat {
-    switch self.config.position {
+    switch self.config.alignment {
     case .horizontal(_, let w, _): return CGFloat(w)
     case .vertical(_, _): return alfredFrame.width
     }
   }
 
   func height() -> CGFloat {
-    switch self.config.position {
+    switch self.config.alignment {
     case .horizontal(_, _, nil): return alfredFrame.height
     case .horizontal(_, _, let mh?): return max(CGFloat(mh), alfredFrame.height)
     case .vertical(_, let h): return CGFloat(h)
@@ -72,7 +72,7 @@ class Pane {
   func x() -> CGFloat {
     let alf = alfredFrame.minX
     let alfw = alfredFrame.width
-    switch self.config.position {
+    switch self.config.alignment {
     case .vertical(_, _): return alf
     case .horizontal(.left, _, _): return alf - (width() + margin)
     case .horizontal(.right, _, _): return alf + (alfw + margin)
@@ -81,7 +81,7 @@ class Pane {
 
   func y() -> CGFloat {
     let alf = alfredFrame
-    switch self.config.position {
+    switch self.config.alignment {
     case .horizontal(_, _, _): return alf.maxY - height()
     case .vertical(.top, _): return alf.maxY + margin
     case .vertical(.bottom, _): return alf.minY - (height() + margin)

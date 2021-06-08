@@ -1,7 +1,7 @@
 extension PanePosition: Codable {
   enum CodingKeys: CodingKey { case horizontal, vertical }
-  enum HorizontalKeys: CodingKey { case position, width, minHeight }
-  enum VerticalKeys: CodingKey { case position, height }
+  enum HorizontalKeys: CodingKey { case placement, width, minHeight }
+  enum VerticalKeys: CodingKey { case placement, height }
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -13,25 +13,25 @@ extension PanePosition: Codable {
         keyedBy: VerticalKeys.self,
         forKey: .vertical
       )
-      let position = try nested.decode(
+      let placement = try nested.decode(
         VerticalPosition.self,
-        forKey: .position
+        forKey: .placement
       )
       let height = try nested.decode(Int.self, forKey: .height)
-      self = .vertical(position: position, height: height)
+      self = .vertical(placement: placement, height: height)
     case .horizontal:
       let nested = try container.nestedContainer(
         keyedBy: HorizontalKeys.self,
         forKey: .horizontal
       )
-      let position = try nested.decode(
+      let placement = try nested.decode(
         HorizontalPosition.self,
-        forKey: .position
+        forKey: .placement
       )
       let width = try nested.decode(Int.self, forKey: .width)
       let minHeight = try? nested.decode(Int.self, forKey: .minHeight)
       self = .horizontal(
-        position: position,
+        placement: placement,
         width: width,
         minHeight: minHeight
       )
@@ -55,14 +55,14 @@ extension PanePosition: Codable {
         keyedBy: VerticalKeys.self,
         forKey: .vertical
       )
-      try nested.encode(position, forKey: .position)
+      try nested.encode(position, forKey: .placement)
       try nested.encode(height, forKey: .height)
     case .horizontal(let position, let width, let minHeight):
       var nested = container.nestedContainer(
         keyedBy: HorizontalKeys.self,
         forKey: .horizontal
       )
-      try nested.encode(position, forKey: .position)
+      try nested.encode(position, forKey: .placement)
       try nested.encode(width, forKey: .width)
       try nested.encode(minHeight, forKey: .minHeight)
     }
