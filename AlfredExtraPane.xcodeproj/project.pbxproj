@@ -11,7 +11,6 @@
 		D03EA8D325551E0400D3656E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EA8D225551E0400D3656E /* main.swift */; };
 		D03EA8D725551E0700D3656E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03EA8D625551E0700D3656E /* Assets.xcassets */; };
 		D040E2422667A4FC00495B2D /* Alfred in Frameworks */ = {isa = PBXBuildFile; productRef = D040E2412667A4FC00495B2D /* Alfred */; };
-		D04F70D325586069008E17A4 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = D04F70D225586069008E17A4 /* scripts */; };
 		D04F70D5255893B3008E17A4 /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F70D4255893B3008E17A4 /* NSColorExtension.swift */; };
 		D08B6EE5266F31790099EB36 /* Pane.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B6EE4266F31790099EB36 /* Pane.swift */; };
 /* End PBXBuildFile section */
@@ -35,7 +34,6 @@
 		D03EA8D225551E0400D3656E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D03EA8D625551E0700D3656E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D03EA8DB25551E0700D3656E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D04F70D225586069008E17A4 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
 		D04F70D4255893B3008E17A4 /* NSColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
 		D08B6EE4266F31790099EB36 /* Pane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pane.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,7 +70,6 @@
 		D03EA8D125551E0400D3656E /* AlfredExtraPane */ = {
 			isa = PBXGroup;
 			children = (
-				D04F70D225586069008E17A4 /* scripts */,
 				D03EA8D225551E0400D3656E /* main.swift */,
 				D03EA8D625551E0700D3656E /* Assets.xcassets */,
 				D03EA8DB25551E0700D3656E /* Info.plist */,
@@ -156,7 +153,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D03EA8D725551E0700D3656E /* Assets.xcassets in Resources */,
-				D04F70D325586069008E17A4 /* scripts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
