@@ -13,6 +13,7 @@
 		D040E2422667A4FC00495B2D /* Alfred in Frameworks */ = {isa = PBXBuildFile; productRef = D040E2412667A4FC00495B2D /* Alfred */; };
 		D04F70D325586069008E17A4 /* scripts in Resources */ = {isa = PBXBuildFile; fileRef = D04F70D225586069008E17A4 /* scripts */; };
 		D04F70D5255893B3008E17A4 /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F70D4255893B3008E17A4 /* NSColorExtension.swift */; };
+		D08B6EE5266F31790099EB36 /* Pane.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B6EE4266F31790099EB36 /* Pane.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,6 +37,7 @@
 		D03EA8DB25551E0700D3656E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D04F70D225586069008E17A4 /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
 		D04F70D4255893B3008E17A4 /* NSColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
+		D08B6EE4266F31790099EB36 /* Pane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pane.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				D03EA8DB25551E0700D3656E /* Info.plist */,
 				D04F70D4255893B3008E17A4 /* NSColorExtension.swift */,
 				D01646B9255AF27A00646F0C /* utils.swift */,
+				D08B6EE4266F31790099EB36 /* Pane.swift */,
 			);
 			path = AlfredExtraPane;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D03EA8D325551E0400D3656E /* main.swift in Sources */,
+				D08B6EE5266F31790099EB36 /* Pane.swift in Sources */,
 				D04F70D5255893B3008E17A4 /* NSColorExtension.swift in Sources */,
 				D01646BA255AF27A00646F0C /* utils.swift in Sources */,
 			);
@@ -356,7 +360,7 @@
 			repositoryURL = "https://github.com/mr-pennyworth/AlfredSwift";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 0.1.0;
+				minimumVersion = 0.1.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
