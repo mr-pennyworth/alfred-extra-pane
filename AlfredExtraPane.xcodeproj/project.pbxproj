@@ -14,7 +14,20 @@
 		D04F70D5255893B3008E17A4 /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F70D4255893B3008E17A4 /* NSColorExtension.swift */; };
 		D08B6EE5266F31790099EB36 /* Pane.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B6EE4266F31790099EB36 /* Pane.swift */; };
 		D08B6EE7266F9B520099EB36 /* PanePositionCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B6EE6266F9B520099EB36 /* PanePositionCodable.swift */; };
+		D08B6EEF26704DE30099EB36 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B6EEE26704DE30099EB36 /* main.swift */; };
+		D08B6EFB267050900099EB36 /* wflist in CopyFiles */ = {isa = PBXBuildFile; fileRef = D08B6EEC26704DE20099EB36 /* wflist */; };
+		D0CE992A267057CA00DB243A /* Alfred in Frameworks */ = {isa = PBXBuildFile; productRef = D0CE9929267057CA00DB243A /* Alfred */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D08B6EF8267050490099EB36 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D03EA8C725551E0400D3656E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D08B6EEB26704DE20099EB36;
+			remoteInfo = wflist;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		D03EA8F22555664D00D3656E /* Embed Frameworks */ = {
@@ -25,6 +38,25 @@
 			files = (
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D08B6EEA26704DE20099EB36 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		D08B6EFA267050670099EB36 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				D08B6EFB267050900099EB36 /* wflist in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -38,6 +70,8 @@
 		D04F70D4255893B3008E17A4 /* NSColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
 		D08B6EE4266F31790099EB36 /* Pane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pane.swift; sourceTree = "<group>"; };
 		D08B6EE6266F9B520099EB36 /* PanePositionCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanePositionCodable.swift; sourceTree = "<group>"; };
+		D08B6EEC26704DE20099EB36 /* wflist */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = wflist; sourceTree = BUILT_PRODUCTS_DIR; };
+		D08B6EEE26704DE30099EB36 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +83,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D08B6EE926704DE20099EB36 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0CE992A267057CA00DB243A /* Alfred in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -56,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				D03EA8D125551E0400D3656E /* AlfredExtraPane */,
+				D08B6EED26704DE30099EB36 /* wflist */,
 				D03EA8D025551E0400D3656E /* Products */,
 				D03EA8EE2555664C00D3656E /* Frameworks */,
 			);
@@ -65,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				D03EA8CF25551E0400D3656E /* AlfredExtraPane.app */,
+				D08B6EEC26704DE20099EB36 /* wflist */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,6 +134,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D08B6EED26704DE30099EB36 /* wflist */ = {
+			isa = PBXGroup;
+			children = (
+				D08B6EEE26704DE30099EB36 /* main.swift */,
+			);
+			path = wflist;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -101,10 +153,12 @@
 				D03EA8CC25551E0400D3656E /* Frameworks */,
 				D03EA8CD25551E0400D3656E /* Resources */,
 				D03EA8F22555664D00D3656E /* Embed Frameworks */,
+				D08B6EFA267050670099EB36 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D08B6EF9267050490099EB36 /* PBXTargetDependency */,
 			);
 			name = AlfredExtraPane;
 			packageProductDependencies = (
@@ -114,18 +168,41 @@
 			productReference = D03EA8CF25551E0400D3656E /* AlfredExtraPane.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D08B6EEB26704DE20099EB36 /* wflist */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D08B6EF026704DE30099EB36 /* Build configuration list for PBXNativeTarget "wflist" */;
+			buildPhases = (
+				D08B6EE826704DE20099EB36 /* Sources */,
+				D08B6EE926704DE20099EB36 /* Frameworks */,
+				D08B6EEA26704DE20099EB36 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = wflist;
+			packageProductDependencies = (
+				D0CE9929267057CA00DB243A /* Alfred */,
+			);
+			productName = wflist;
+			productReference = D08B6EEC26704DE20099EB36 /* wflist */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		D03EA8C725551E0400D3656E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1170;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Mr. Pennyworth";
 				TargetAttributes = {
 					D03EA8CE25551E0400D3656E = {
 						CreatedOnToolsVersion = 11.7;
+					};
+					D08B6EEB26704DE20099EB36 = {
+						CreatedOnToolsVersion = 12.4;
 					};
 				};
 			};
@@ -146,6 +223,7 @@
 			projectRoot = "";
 			targets = (
 				D03EA8CE25551E0400D3656E /* AlfredExtraPane */,
+				D08B6EEB26704DE20099EB36 /* wflist */,
 			);
 		};
 /* End PBXProject section */
@@ -174,7 +252,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D08B6EE826704DE20099EB36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D08B6EEF26704DE30099EB36 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D08B6EF9267050490099EB36 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D08B6EEB26704DE20099EB36 /* wflist */;
+			targetProxy = D08B6EF8267050490099EB36 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D03EA8DD25551E0700D3656E /* Debug */ = {
@@ -333,6 +427,34 @@
 			};
 			name = Release;
 		};
+		D08B6EF126704DE30099EB36 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane.wflist;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D08B6EF226704DE30099EB36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane.wflist;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -354,6 +476,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		D08B6EF026704DE30099EB36 /* Build configuration list for PBXNativeTarget "wflist" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D08B6EF126704DE30099EB36 /* Debug */,
+				D08B6EF226704DE30099EB36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -362,13 +493,18 @@
 			repositoryURL = "https://github.com/mr-pennyworth/AlfredSwift";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 0.1.1;
+				minimumVersion = 0.1.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		D040E2412667A4FC00495B2D /* Alfred */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D040E2402667A4FC00495B2D /* XCRemoteSwiftPackageReference "AlfredSwift" */;
+			productName = Alfred;
+		};
+		D0CE9929267057CA00DB243A /* Alfred */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D040E2402667A4FC00495B2D /* XCRemoteSwiftPackageReference "AlfredSwift" */;
 			productName = Alfred;
