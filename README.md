@@ -1,4 +1,13 @@
-# AlfredExtraPane
+<h1 align="center">
+  
+<a href="https://github.com/mr-pennyworth/alfred-extra-pane/releases/latest/">
+  <img src="AlfredExtraPane/Assets.xcassets/AppIcon.appiconset/icon_512x512.png" width="16%"><br/>
+  <img alt="Download"
+       src="https://img.shields.io/github/downloads/mr-pennyworth/alfred-extra-pane/total?color=purple&label=Download"><br/>
+</a>
+  AlfredExtraPane
+</h1>
+
 Spotight-like rich previews for [Alfred](https://alfredapp.com) workflows.
 
 ![](media/demo-fast.gif)
