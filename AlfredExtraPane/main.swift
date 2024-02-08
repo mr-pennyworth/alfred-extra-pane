@@ -31,11 +31,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 autoreleasepool {
   let app = NSApplication.shared
+  let args = CommandLine.arguments.suffix(from: 1)
   var configFilePath: URL? = nil
-  if let configPath: String = CommandLine.arguments.suffix(from: 1).first {
-    configFilePath = URL(fileURLWithPath: configPath)
-  } else {
-    log("No config file path provided.")
+  if let configPath: String = args.first {
+    if FileManager().fileExists(atPath: configPath) {
+      configFilePath = URL(fileURLWithPath: configPath)
+    }
+  }
+  if configFilePath == nil {
+    log("No config file path provided. args: \(args)")
   }
   let delegate = AppDelegate(configFilePath)
   app.setActivationPolicy(.accessory)
