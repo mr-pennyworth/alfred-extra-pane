@@ -5,7 +5,7 @@ on: push
 jobs:
   build-and-release:
     name: Build AlfredExtraPane and release
-    runs-on: macos-10.15
+    runs-on: macos-latest
     steps:
 
       - name: Checkout code
