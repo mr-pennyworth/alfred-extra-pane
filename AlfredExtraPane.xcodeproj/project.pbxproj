@@ -495,7 +495,7 @@
 			repositoryURL = "https://github.com/mr-pennyworth/AlfredSwift";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 0.1.3;
+				minimumVersion = 0.1.6;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
