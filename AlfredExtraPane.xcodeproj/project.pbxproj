@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -102,7 +102,9 @@
 				D03EA8D025551E0400D3656E /* Products */,
 				D03EA8EE2555664C00D3656E /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		D03EA8D025551E0400D3656E /* Products */ = {
 			isa = PBXGroup;
