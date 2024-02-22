@@ -5,14 +5,14 @@ on: push
 jobs:
   build-and-release:
     name: Build AlfredExtraPane and release
-    runs-on: macos-latest
+    runs-on: macos-13
     steps:
 
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Select Xcode
-        run: sudo xcode-select -switch /Applications/Xcode.app
+        run: sudo xcode-select -switch /Applications/Xcode_15.2.app
 
       - name: Xcode version
         run: /usr/bin/xcodebuild -version
