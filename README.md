@@ -85,7 +85,7 @@ Here's an example with four panes configured:
     "vertical" : {"placement" : "bottom", "height" : 200}}
 }]
 ```
-![](media/muti-pane.png)
+![](media/multi-pane.png)
 
 ## Tutorial
 Here's a script filter that produces a result:
