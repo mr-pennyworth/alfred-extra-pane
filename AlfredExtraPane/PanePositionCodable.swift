@@ -14,7 +14,7 @@ extension PanePosition: Codable {
         forKey: .vertical
       )
       let placement = try nested.decode(
-        VerticalPosition.self,
+        VerticalPlacement.self,
         forKey: .placement
       )
       let height = try nested.decode(Int.self, forKey: .height)
@@ -25,7 +25,7 @@ extension PanePosition: Codable {
         forKey: .horizontal
       )
       let placement = try nested.decode(
-        HorizontalPosition.self,
+        HorizontalPlacement.self,
         forKey: .placement
       )
       let width = try nested.decode(Int.self, forKey: .width)

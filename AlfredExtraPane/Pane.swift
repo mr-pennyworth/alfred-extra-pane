@@ -3,15 +3,15 @@ import Cocoa
 import Foundation
 import WebKit
 
-enum PanePosition {
-  enum HorizontalPosition: String, Codable, CodingKey { case left, right }
-  enum VerticalPosition: String, Codable, CodingKey { case top, bottom }
+enum PanePosition: Equatable {
+  enum HorizontalPlacement: String, Codable, CodingKey { case left, right }
+  enum VerticalPlacement: String, Codable, CodingKey { case top, bottom }
 
-  case horizontal(placement: HorizontalPosition, width: Int, minHeight: Int?)
-  case vertical(placement: VerticalPosition, height: Int)
+  case horizontal(placement: HorizontalPlacement, width: Int, minHeight: Int?)
+  case vertical(placement: VerticalPlacement, height: Int)
 }
 
-struct PaneConfig: Codable {
+public struct PaneConfig: Codable, Equatable {
   let alignment: PanePosition
   let workflowUID: String
 }

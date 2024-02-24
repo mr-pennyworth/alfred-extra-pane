@@ -4,21 +4,17 @@ import Foundation
 
 
 class AppDelegate: NSObject, NSApplicationDelegate {
-  let panes: [Pane]
-  let defaultConfig: PaneConfig = PaneConfig(
+  var panes: [Pane] = []
+  private let defaultConfig = PaneConfig(
     alignment: .horizontal(placement: .right, width: 300, minHeight: 400),
     workflowUID: "*"
   )
 
-  init(_ configFilePath: URL?) {
-    var configs: [PaneConfig] = []
-    if let configFilePath = configFilePath {
-      configs = read(contentsOf: configFilePath) ?? []
-    } else {
-      log("Loading default catchall-config")
-      configs = [defaultConfig]
-    }
-    panes = configs.map { Pane(config: $0) }
+  override init() {
+    super.init()
+    let confs: [PaneConfig] =
+      (try? read(contentsOf: configFile())) ?? [defaultConfig]
+    panes = confs.map { Pane(config: $0) }
   }
 
   func application(_ application: NSApplication, open urls: [URL]) {
@@ -27,21 +23,44 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       log("\(url.queryParameters)")
     }
   }
+
+  func appSupportDir() throws -> URL {
+    let fs = FileManager.default
+    let appSupportURL = try fs.url(
+      for: .applicationSupportDirectory,
+      in: .userDomainMask,
+      appropriateFor: nil,
+      create: true
+    )
+
+    let bundleID = Bundle.main.bundleIdentifier!
+    let appDir = appSupportURL.appendingPathComponent(bundleID)
+
+    if !fs.fileExists(atPath: appDir.path) {
+      try fs.createDirectory(
+        at: appDir,
+        withIntermediateDirectories: true,
+        attributes: nil
+      )
+    }
+
+    return appDir
+  }
+
+  func configFile() throws -> URL {
+    let fs = FileManager.default
+    let conf = try! appSupportDir().appendingPathComponent("config.json")
+    if !fs.fileExists(atPath: conf.path) {
+      write([defaultConfig], to: conf)
+    }
+    return conf
+  }
 }
 
 autoreleasepool {
   let app = NSApplication.shared
-  let args = CommandLine.arguments.suffix(from: 1)
-  var configFilePath: URL? = nil
-  if let configPath: String = args.first {
-    if FileManager().fileExists(atPath: configPath) {
-      configFilePath = URL(fileURLWithPath: configPath)
-    }
-  }
-  if configFilePath == nil {
-    log("No config file path provided. args: \(args)")
-  }
-  let delegate = AppDelegate(configFilePath)
+  let delegate = AppDelegate()
+  print("\(delegate.panes)")
   app.setActivationPolicy(.accessory)
   app.delegate = delegate
   app.run()

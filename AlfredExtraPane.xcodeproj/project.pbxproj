@@ -16,6 +16,7 @@
 		D08B6EE7266F9B520099EB36 /* PanePositionCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B6EE6266F9B520099EB36 /* PanePositionCodable.swift */; };
 		D08B6EEF26704DE30099EB36 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B6EEE26704DE30099EB36 /* main.swift */; };
 		D08B6EFB267050900099EB36 /* wflist in CopyFiles */ = {isa = PBXBuildFile; fileRef = D08B6EEC26704DE20099EB36 /* wflist */; };
+		D0B3E0A42B8A1F3A008EA695 /* AlfredExtraPaneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3E0A32B8A1F3A008EA695 /* AlfredExtraPaneTests.swift */; };
 		D0CE992A267057CA00DB243A /* Alfred in Frameworks */ = {isa = PBXBuildFile; productRef = D0CE9929267057CA00DB243A /* Alfred */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = D08B6EEB26704DE20099EB36;
 			remoteInfo = wflist;
+		};
+		D0B3E0A52B8A1F3A008EA695 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D03EA8C725551E0400D3656E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D03EA8CE25551E0400D3656E;
+			remoteInfo = AlfredExtraPane;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -72,6 +80,8 @@
 		D08B6EE6266F9B520099EB36 /* PanePositionCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanePositionCodable.swift; sourceTree = "<group>"; };
 		D08B6EEC26704DE20099EB36 /* wflist */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = wflist; sourceTree = BUILT_PRODUCTS_DIR; };
 		D08B6EEE26704DE30099EB36 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		D0B3E0A12B8A1F39008EA695 /* AlfredExtraPaneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlfredExtraPaneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0B3E0A32B8A1F3A008EA695 /* AlfredExtraPaneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlfredExtraPaneTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +101,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D0B3E09E2B8A1F39008EA695 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -99,6 +116,7 @@
 			children = (
 				D03EA8D125551E0400D3656E /* AlfredExtraPane */,
 				D08B6EED26704DE30099EB36 /* wflist */,
+				D0B3E0A22B8A1F3A008EA695 /* AlfredExtraPaneTests */,
 				D03EA8D025551E0400D3656E /* Products */,
 				D03EA8EE2555664C00D3656E /* Frameworks */,
 			);
@@ -111,6 +129,7 @@
 			children = (
 				D03EA8CF25551E0400D3656E /* AlfredExtraPane.app */,
 				D08B6EEC26704DE20099EB36 /* wflist */,
+				D0B3E0A12B8A1F39008EA695 /* AlfredExtraPaneTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,6 +161,14 @@
 				D08B6EEE26704DE30099EB36 /* main.swift */,
 			);
 			path = wflist;
+			sourceTree = "<group>";
+		};
+		D0B3E0A22B8A1F3A008EA695 /* AlfredExtraPaneTests */ = {
+			isa = PBXGroup;
+			children = (
+				D0B3E0A32B8A1F3A008EA695 /* AlfredExtraPaneTests.swift */,
+			);
+			path = AlfredExtraPaneTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,13 +217,31 @@
 			productReference = D08B6EEC26704DE20099EB36 /* wflist */;
 			productType = "com.apple.product-type.tool";
 		};
+		D0B3E0A02B8A1F39008EA695 /* AlfredExtraPaneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0B3E0A72B8A1F3A008EA695 /* Build configuration list for PBXNativeTarget "AlfredExtraPaneTests" */;
+			buildPhases = (
+				D0B3E09D2B8A1F39008EA695 /* Sources */,
+				D0B3E09E2B8A1F39008EA695 /* Frameworks */,
+				D0B3E09F2B8A1F39008EA695 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D0B3E0A62B8A1F3A008EA695 /* PBXTargetDependency */,
+			);
+			name = AlfredExtraPaneTests;
+			productName = AlfredExtraPaneTests;
+			productReference = D0B3E0A12B8A1F39008EA695 /* AlfredExtraPaneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		D03EA8C725551E0400D3656E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Mr. Pennyworth";
 				TargetAttributes = {
@@ -205,6 +250,10 @@
 					};
 					D08B6EEB26704DE20099EB36 = {
 						CreatedOnToolsVersion = 12.4;
+					};
+					D0B3E0A02B8A1F39008EA695 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = D03EA8CE25551E0400D3656E;
 					};
 				};
 			};
@@ -226,6 +275,7 @@
 			targets = (
 				D03EA8CE25551E0400D3656E /* AlfredExtraPane */,
 				D08B6EEB26704DE20099EB36 /* wflist */,
+				D0B3E0A02B8A1F39008EA695 /* AlfredExtraPaneTests */,
 			);
 		};
 /* End PBXProject section */
@@ -236,6 +286,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D03EA8D725551E0700D3656E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0B3E09F2B8A1F39008EA695 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +319,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D0B3E09D2B8A1F39008EA695 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0B3E0A42B8A1F3A008EA695 /* AlfredExtraPaneTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -269,6 +334,11 @@
 			isa = PBXTargetDependency;
 			target = D08B6EEB26704DE20099EB36 /* wflist */;
 			targetProxy = D08B6EF8267050490099EB36 /* PBXContainerItemProxy */;
+		};
+		D0B3E0A62B8A1F3A008EA695 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D03EA8CE25551E0400D3656E /* AlfredExtraPane */;
+			targetProxy = D0B3E0A52B8A1F3A008EA695 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -401,7 +471,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.1.2;
+				MARKETING_VERSION = 0.1.3;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane;
@@ -422,7 +492,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.1.2;
+				MARKETING_VERSION = 0.1.3;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane;
@@ -461,6 +531,51 @@
 			};
 			name = Release;
 		};
+		D0B3E0A82B8A1F3A008EA695 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPaneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AlfredExtraPane.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AlfredExtraPane";
+			};
+			name = Debug;
+		};
+		D0B3E0A92B8A1F3A008EA695 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPaneTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AlfredExtraPane.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AlfredExtraPane";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -487,6 +602,15 @@
 			buildConfigurations = (
 				D08B6EF126704DE30099EB36 /* Debug */,
 				D08B6EF226704DE30099EB36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0B3E0A72B8A1F3A008EA695 /* Build configuration list for PBXNativeTarget "AlfredExtraPaneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0B3E0A82B8A1F3A008EA695 /* Debug */,
+				D0B3E0A92B8A1F3A008EA695 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

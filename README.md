@@ -55,11 +55,37 @@ As a workflow author, when you generate the HTML, use these
 variables in it. The pane will make sure they're injected.
 Check out the [tutorial](#tutorial) for a quick walk-through.
 
-## What's not yet supported?  
+## What's not yet supported?
  - Configurability
     - Workflows should be able to opt out of the extra pane
     - Workflows should be able to configure the position
       and dimensions of the pane
+
+## Configuration
+The appearance of the pane(s) can be configured by editing
+`~/Library/Application Support/mr.pennyworth.AlfredExtraPane/config.json`
+
+Here's an example with four panes configured:
+```json
+[{
+  "workflowUID" : "*",
+  "alignment" : {
+    "horizontal" : {"placement" : "right", "width" : 300, "minHeight" : 400}}
+}, {
+  "workflowUID" : "*",
+  "alignment" : {
+    "horizontal" : {"placement" : "left", "width" : 300, "minHeight" : 400}}
+}, {
+  "workflowUID" : "*",
+  "alignment" : {
+    "vertical" : {"placement" : "top", "height" : 100}}
+}, {
+  "workflowUID" : "*",
+  "alignment" : {
+    "vertical" : {"placement" : "bottom", "height" : 200}}
+}]
+```
+![](media/muti-pane.png)
 
 ## Tutorial
 Here's a script filter that produces a result:
