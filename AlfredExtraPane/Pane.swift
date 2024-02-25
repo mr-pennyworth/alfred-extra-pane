@@ -112,6 +112,7 @@ func makeWindow() -> NSWindow {
     defer: false,
     screen: NSScreen.main!
   )
+  window.backgroundColor = .clear
   window.level = .floating
   window.collectionBehavior = [
     .canJoinAllSpaces, .stationary, .fullScreenAuxiliary
@@ -127,6 +128,10 @@ func makeWindow() -> NSWindow {
   // and we don't want titled because we don't want window border
   let windowBkg = NSView(frame: .zero)
   windowBkg.backgroundColor = NSColor.fromHexString(hex: "#1d1e28", alpha: 1)
+  windowBkg.wantsLayer = true
+  windowBkg.layer?.cornerRadius =
+    CGFloat((Alfred.theme["window-roundness"] as? Float) ?? 0)
+  windowBkg.layer?.masksToBounds = true
   window.contentView = windowBkg
 
   return window
