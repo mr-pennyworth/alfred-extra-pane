@@ -63,7 +63,7 @@ Check out the [tutorial](#tutorial) for a quick walk-through.
 
 ## Configuration
 The appearance of the pane(s) can be configured by editing
-`~/Library/Application Support/mr.pennyworth.AlfredExtraPane/config.json`
+`path/to/Alfred.alfredpreferences/mr.pennyworth.AlfredExtraPane/config.json`
 
 Here's an example with four panes configured:
 ```json

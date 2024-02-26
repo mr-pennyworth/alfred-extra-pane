@@ -4,6 +4,7 @@ import Foundation
 
 
 class AppDelegate: NSObject, NSApplicationDelegate {
+  let fs = FileManager.default
   var panes: [Pane] = []
   private let defaultConfig = PaneConfig(
     alignment: .horizontal(placement: .right, width: 300, minHeight: 400),
@@ -24,32 +25,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
   }
 
-  func appSupportDir() throws -> URL {
-    let fs = FileManager.default
-    let appSupportURL = try fs.url(
-      for: .applicationSupportDirectory,
-      in: .userDomainMask,
-      appropriateFor: nil,
-      create: true
-    )
-
+  func appPrefsDir() throws -> URL {
     let bundleID = Bundle.main.bundleIdentifier!
-    let appDir = appSupportURL.appendingPathComponent(bundleID)
+    let prefsDir = Alfred
+      .prefsDir
+      .appendingPathComponent("preferences")
+      .appendingPathComponent(bundleID)
 
-    if !fs.fileExists(atPath: appDir.path) {
+    if !fs.fileExists(atPath: prefsDir.path) {
       try fs.createDirectory(
-        at: appDir,
+        at: prefsDir,
         withIntermediateDirectories: true,
         attributes: nil
       )
     }
 
-    return appDir
+    return prefsDir
   }
 
   func configFile() throws -> URL {
-    let fs = FileManager.default
-    let conf = try! appSupportDir().appendingPathComponent("config.json")
+    let conf = try! appPrefsDir().appendingPathComponent("config.json")
     if !fs.fileExists(atPath: conf.path) {
       write([defaultConfig], to: conf)
     }

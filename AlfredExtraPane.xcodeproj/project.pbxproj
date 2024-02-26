@@ -471,8 +471,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.1.5;
 				ONLY_ACTIVE_ARCH = NO;
+				MARKETING_VERSION = 0.1.6;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -492,8 +492,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.1.5;
 				ONLY_ACTIVE_ARCH = NO;
+				MARKETING_VERSION = 0.1.6;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane;
 				PRODUCT_NAME = "$(TARGET_NAME)";
