@@ -138,9 +138,16 @@ func makeWindow() -> NSWindow {
 }
 
 func makeWebView() -> WKWebView {
-  let configuration = WKWebViewConfiguration()
-  configuration.preferences.setValue(true, forKey: "developerExtrasEnabled")
-  return WKWebView(frame: .zero, configuration: configuration)
+  let conf = WKWebViewConfiguration()
+  conf.preferences.setValue(true, forKey: "developerExtrasEnabled")
+
+  // TODO: allow configuration from prefs.json
+  // we don't want the pane to autoplay audio from the loaded webpage.
+  // (ideally, we want to be able to configure it, but till then, the
+  // quick fix is to disable autoplay).
+  conf.mediaTypesRequiringUserActionForPlayback = .all
+
+  return WKWebView(frame: .zero, configuration: conf)
 }
 
 func injectCSS(_ html: String) -> String {
