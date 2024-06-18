@@ -17,8 +17,8 @@ Spotight-like rich previews for [Alfred](https://alfredapp.com) workflows.
 [Alfred Workflows](https://www.alfredapp.com/workflows/).
 
 #### How does it do it?
-Alfred has an experimental "[Press Secretary](presssec)" to publish
-macOS [distributed notifications](dist-notifs). These notifications
+Alfred has an experimental "[Press Secretary](https://www.alfredforum.com/topic/16111-wip-poc-spotlight-like-rich-preview-pane-for-alfred-workflows/?do=findComment&comment=83222)" to publish
+macOS [distributed notifications](https://developer.apple.com/documentation/foundation/distributednotificationcenter). These notifications
 contain all the information needed to be able to show the extra pane.
 
 #### Adding to workflow
@@ -154,6 +154,3 @@ Themed previews should show up:
 
 | ![](media/tutorial-images/alfred-4.png) | ![](media/tutorial-images/alfred-5.png) |
 |-|-|
-
-[dist-notifs]: https://developer.apple.com/documentation/foundation/distributednotificationcenter
-[presssec]: https://www.alfredforum.com/topic/16111-wip-poc-spotlight-like-rich-preview-pane-for-alfred-workflows/?do=findComment&comment=83222
