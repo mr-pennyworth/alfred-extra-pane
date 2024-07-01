@@ -104,7 +104,14 @@ class Pane {
   }
 }
 
+let cornerRadius =
+  CGFloat((Alfred.theme["window-roundness"] as? Float) ?? 0)
+
 func makeWindow() -> NSWindow {
+  let windowColorHex =
+    (Alfred.theme["window-color"] as? String) ?? "#1d1e28ff"
+  let windowColor = NSColor.from(hex: windowColorHex)!
+
   let window = NSWindow(
     contentRect: .zero,
     styleMask: [.borderless, .fullSizeContentView],
@@ -122,17 +129,21 @@ func makeWindow() -> NSWindow {
   // the webview just doesn't load!
   window.titlebarAppearsTransparent = true
 
-  // Need this backgrund view gimickry because
-  // if we don't have .titled for the window,
-  // window.backgroundColor seems to have no effect at all,
-  // and we don't want titled because we don't want window border
-  let windowBkg = NSView(frame: .zero)
-  windowBkg.backgroundColor = NSColor.from(hex: "#1d1e28ff")
-  windowBkg.wantsLayer = true
-  windowBkg.layer?.cornerRadius =
-    CGFloat((Alfred.theme["window-roundness"] as? Float) ?? 0)
-  windowBkg.layer?.masksToBounds = true
-  window.contentView = windowBkg
+  let containerView = NSView(frame: window.contentView!.bounds)
+  containerView.autoresizingMask = [.width, .height]
+  containerView.wantsLayer = true
+  containerView.layer?.cornerRadius = cornerRadius
+  containerView.layer?.masksToBounds = true
+  
+  let colorView = NSView(frame: containerView.bounds)
+  colorView.autoresizingMask = [.width, .height]
+  colorView.wantsLayer = true
+  colorView.layer?.backgroundColor = windowColor.cgColor
+  colorView.layer?.cornerRadius = cornerRadius
+  colorView.layer?.masksToBounds = true
+
+  containerView.addSubview(colorView)
+  window.contentView?.addSubview(containerView)
 
   return window
 }
@@ -147,7 +158,12 @@ func makeWebView() -> WKWebView {
   // quick fix is to disable autoplay).
   conf.mediaTypesRequiringUserActionForPlayback = .all
 
-  return WKWebView(frame: .zero, configuration: conf)
+  let webView = WKWebView(frame: .zero, configuration: conf)
+  webView.backgroundColor = .clear
+  webView.setValue(false, forKey: "drawsBackground")
+  webView.wantsLayer = true
+  webView.layer?.cornerRadius = cornerRadius
+  return webView
 }
 
 func injectCSS(_ html: String) -> String {
