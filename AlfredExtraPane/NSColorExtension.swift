@@ -12,34 +12,33 @@ extension String  {
 }
 
 extension NSColor {
-  class func fromHex(hex: Int, alpha: Float) -> NSColor {
-    let red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
-    let green = CGFloat((hex & 0xFF00) >> 8) / 255.0
-    let blue = CGFloat((hex & 0xFF)) / 255.0
-    return NSColor(calibratedRed: red, green: green, blue: blue, alpha: 1.0)
-  }
-
-  class func fromHexString(hex: String, alpha: Float) -> NSColor? {
+  class func from(hex: String) -> NSColor? {
     // Handle two types of literals: 0x and # prefixed
-    var cleanedString = ""
-    if hex.hasPrefix("0x") {
-      cleanedString = String(hex.dropFirst(2))
-    } else if hex.hasPrefix("#") {
-      cleanedString = String(hex.dropFirst(1))
-    }
-    // Ensure it only contains valid hex characters 0
-    let validHexPattern = "[a-fA-F0-9]+"
-    if cleanedString.conformsTo(pattern: validHexPattern) {
-      var theInt: UInt32 = 0
-      let scanner = Scanner(string: cleanedString)
-      scanner.scanHexInt32(&theInt)
-      let red = CGFloat((theInt & 0xFF0000) >> 16) / 255.0
-      let green = CGFloat((theInt & 0xFF00) >> 8) / 255.0
-      let blue = CGFloat((theInt & 0xFF)) / 255.0
-      return NSColor(red: red, green: green, blue: blue, alpha: 1.0)
-
-    } else {
+    let cleanedStr = hex
+      .trimmingCharacters(in: .whitespacesAndNewlines)
+      .replacingOccurrences(of: "0x", with: "")
+      .replacingOccurrences(of: "#", with: "")
+    
+    // Accept only rrggbbaa or rrggbb
+    let hexChars = "[a-fA-F0-9]"
+    let validColor = "^(\(hexChars){6}|\(hexChars){8})$"
+    if !cleanedStr.conformsTo(pattern: validColor) {
       return nil
     }
+
+    // convert rrggbb to rrggbb00
+    let colorStr = if cleanedStr.count == 6 {
+      cleanedStr + "00"
+    } else {
+      cleanedStr
+    }
+    
+    var rgba: UInt64 = 0
+    Scanner(string: colorStr).scanHexInt64(&rgba)
+    let r = CGFloat((rgba & 0xFF000000) >> 24) / 255.0
+    let g = CGFloat((rgba & 0x00FF0000) >> 16) / 255.0
+    let b = CGFloat((rgba & 0x0000FF00) >> 8) / 255.0
+    let a = CGFloat(rgba & 0x000000FF) / 255.0
+    return NSColor(red: r, green: g, blue: b, alpha: a)
   }
 }

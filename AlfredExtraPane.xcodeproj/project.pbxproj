@@ -12,6 +12,7 @@
 		D03EA8D725551E0700D3656E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03EA8D625551E0700D3656E /* Assets.xcassets */; };
 		D040E2422667A4FC00495B2D /* Alfred in Frameworks */ = {isa = PBXBuildFile; productRef = D040E2412667A4FC00495B2D /* Alfred */; };
 		D04F70D5255893B3008E17A4 /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F70D4255893B3008E17A4 /* NSColorExtension.swift */; };
+		D07360EA2C3237F600739755 /* NSColorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07360E92C3237F600739755 /* NSColorExtensionTests.swift */; };
 		D08B6EE5266F31790099EB36 /* Pane.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B6EE4266F31790099EB36 /* Pane.swift */; };
 		D08B6EE7266F9B520099EB36 /* PanePositionCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B6EE6266F9B520099EB36 /* PanePositionCodable.swift */; };
 		D08B6EEF26704DE30099EB36 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B6EEE26704DE30099EB36 /* main.swift */; };
@@ -76,6 +77,7 @@
 		D03EA8D625551E0700D3656E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D03EA8DB25551E0700D3656E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D04F70D4255893B3008E17A4 /* NSColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
+		D07360E92C3237F600739755 /* NSColorExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtensionTests.swift; sourceTree = "<group>"; };
 		D08B6EE4266F31790099EB36 /* Pane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pane.swift; sourceTree = "<group>"; };
 		D08B6EE6266F9B520099EB36 /* PanePositionCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanePositionCodable.swift; sourceTree = "<group>"; };
 		D08B6EEC26704DE20099EB36 /* wflist */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = wflist; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				D0B3E0A32B8A1F3A008EA695 /* AlfredExtraPaneTests.swift */,
+				D07360E92C3237F600739755 /* NSColorExtensionTests.swift */,
 			);
 			path = AlfredExtraPaneTests;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07360EA2C3237F600739755 /* NSColorExtensionTests.swift in Sources */,
 				D0B3E0A42B8A1F3A008EA695 /* AlfredExtraPaneTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

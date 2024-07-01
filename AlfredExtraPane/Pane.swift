@@ -127,7 +127,7 @@ func makeWindow() -> NSWindow {
   // window.backgroundColor seems to have no effect at all,
   // and we don't want titled because we don't want window border
   let windowBkg = NSView(frame: .zero)
-  windowBkg.backgroundColor = NSColor.fromHexString(hex: "#1d1e28", alpha: 1)
+  windowBkg.backgroundColor = NSColor.from(hex: "#1d1e28ff")
   windowBkg.wantsLayer = true
   windowBkg.layer?.cornerRadius =
     CGFloat((Alfred.theme["window-roundness"] as? Float) ?? 0)
