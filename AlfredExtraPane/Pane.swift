@@ -142,7 +142,28 @@ func makeWindow() -> NSWindow {
   colorView.layer?.cornerRadius = cornerRadius
   colorView.layer?.masksToBounds = true
 
-  containerView.addSubview(colorView)
+  // Since Alfred has deprecated "Classic Blur", we don't bother
+  // supporting it.
+  if Alfred.visualEffect == .light || Alfred.visualEffect == .dark {
+    let blurView = NSVisualEffectView(frame: containerView.bounds)
+    blurView.autoresizingMask = [.width, .height]
+    blurView.material = if Alfred.visualEffect == .light {
+      .mediumLight
+    } else {
+      .dark
+    }
+    blurView.blendingMode = .behindWindow
+    blurView.state = .active
+    blurView.wantsLayer = true
+    blurView.layer?.cornerRadius = cornerRadius
+    blurView.layer?.masksToBounds = true
+
+    blurView.addSubview(colorView)
+    containerView.addSubview(blurView)
+  } else {
+    containerView.addSubview(colorView)
+  }
+  
   window.contentView?.addSubview(containerView)
 
   return window

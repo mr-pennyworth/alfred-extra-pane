@@ -476,7 +476,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = NO;
-				MARKETING_VERSION = 0.1.6;
+				MARKETING_VERSION = 0.1.7;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -497,7 +497,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = NO;
-				MARKETING_VERSION = 0.1.6;
+				MARKETING_VERSION = 0.1.7;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -627,7 +627,7 @@
 			repositoryURL = "https://github.com/mr-pennyworth/AlfredSwift";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.8;
+				minimumVersion = 0.1.9;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
