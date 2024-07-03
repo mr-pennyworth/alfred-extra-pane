@@ -10,12 +10,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     alignment: .horizontal(placement: .right, width: 300, minHeight: 400),
     workflowUID: "*"
   )
-
+  var statusItem: NSStatusItem?
+  
   override init() {
     super.init()
     let confs: [PaneConfig] =
       (try? read(contentsOf: configFile())) ?? [defaultConfig]
     panes = confs.map { Pane(config: $0) }
+  }
+  
+  func applicationDidFinishLaunching(_ notification: Notification) {
+      setupMenubarExtra()
   }
 
   func application(_ application: NSApplication, open urls: [URL]) {
@@ -49,6 +54,40 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       write([defaultConfig], to: conf)
     }
     return conf
+  }
+  
+  func setupMenubarExtra() {
+    let appName =
+      Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String
+    statusItem =
+      NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    if let button = statusItem?.button {
+      let image = NSImage(
+        systemSymbolName: "sidebar.right",
+        accessibilityDescription: appName + " Menu"
+      )
+      image?.isTemplate = true
+      button.image = image
+      button.toolTip = appName
+    }
+    
+    let menu = NSMenu()
+    menu.addItem(NSMenuItem(
+      title: "Restart " + appName,
+      action: #selector(restart),
+      keyEquivalent: "r"
+    ))
+    
+    statusItem?.menu = menu
+  }
+  
+  
+  @objc func restart() {
+    let task = Process()
+    task.launchPath = "/usr/bin/open"
+    task.arguments = [Bundle.main.bundlePath]
+    task.launch()
+    NSApplication.shared.terminate(nil)
   }
 }
 
