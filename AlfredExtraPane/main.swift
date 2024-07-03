@@ -1,7 +1,7 @@
 import Alfred
 import AppKit
 import Foundation
-
+import Sparkle
 
 class AppDelegate: NSObject, NSApplicationDelegate {
   let fs = FileManager.default
@@ -11,16 +11,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     workflowUID: "*"
   )
   var statusItem: NSStatusItem?
-  
+  let updaterController = SPUStandardUpdaterController(
+    startingUpdater: true,
+    updaterDelegate: nil,
+    userDriverDelegate: nil
+  )
+
   override init() {
     super.init()
     let confs: [PaneConfig] =
       (try? read(contentsOf: configFile())) ?? [defaultConfig]
     panes = confs.map { Pane(config: $0) }
   }
-  
+
   func applicationDidFinishLaunching(_ notification: Notification) {
-      setupMenubarExtra()
+    setupMenubarExtra()
   }
 
   func application(_ application: NSApplication, open urls: [URL]) {
@@ -55,7 +60,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     return conf
   }
-  
+
   func setupMenubarExtra() {
     let appName =
       Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String
@@ -70,18 +75,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       button.image = image
       button.toolTip = appName
     }
-    
+
     let menu = NSMenu()
+    menu.addItem(NSMenuItem(
+      title: "Check for Updates",
+      action: #selector(checkForUpdates),
+      keyEquivalent: "u"
+    ))
     menu.addItem(NSMenuItem(
       title: "Restart " + appName,
       action: #selector(restart),
       keyEquivalent: "r"
     ))
-    
+
     statusItem?.menu = menu
   }
-  
-  
+
+  @objc func checkForUpdates() {
+    updaterController.checkForUpdates(nil)
+  }
+
   @objc func restart() {
     let task = Process()
     task.launchPath = "/usr/bin/open"

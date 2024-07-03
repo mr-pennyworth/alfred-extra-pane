@@ -3,6 +3,13 @@ DerivedData
 xcuserdata/
 xcuserdata
 xcuserdata/
+Sparkle/
+*.key
 *.pyc
 *.xcworkspace
 .idea
+.latest-tag
+.release-version
+AlfredExtraPane.app.zip
+appcast.xml
+.DS_Store

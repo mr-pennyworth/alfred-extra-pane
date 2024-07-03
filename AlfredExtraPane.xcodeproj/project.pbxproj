@@ -16,6 +16,7 @@
 		D08B6EE5266F31790099EB36 /* Pane.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B6EE4266F31790099EB36 /* Pane.swift */; };
 		D08B6EE7266F9B520099EB36 /* PanePositionCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B6EE6266F9B520099EB36 /* PanePositionCodable.swift */; };
 		D0B3E0A42B8A1F3A008EA695 /* AlfredExtraPaneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3E0A32B8A1F3A008EA695 /* AlfredExtraPaneTests.swift */; };
+		D0E764282C3C1E6D00E662F3 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = D0E764272C3C1E6D00E662F3 /* Sparkle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0E764282C3C1E6D00E662F3 /* Sparkle in Frameworks */,
 				D040E2422667A4FC00495B2D /* Alfred in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,6 +156,7 @@
 			name = AlfredExtraPane;
 			packageProductDependencies = (
 				D040E2412667A4FC00495B2D /* Alfred */,
+				D0E764272C3C1E6D00E662F3 /* Sparkle */,
 			);
 			productName = AlfredExtraPane;
 			productReference = D03EA8CF25551E0400D3656E /* AlfredExtraPane.app */;
@@ -207,6 +210,7 @@
 			mainGroup = D03EA8C625551E0400D3656E;
 			packageReferences = (
 				D040E2402667A4FC00495B2D /* XCRemoteSwiftPackageReference "AlfredSwift" */,
+				D0E764262C3C1E6D00E662F3 /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			productRefGroup = D03EA8D025551E0400D3656E /* Products */;
 			projectDirPath = "";
@@ -397,8 +401,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 0.1.8;
 				ONLY_ACTIVE_ARCH = NO;
-				MARKETING_VERSION = 0.1.7;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -418,8 +422,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 0.1.8;
 				ONLY_ACTIVE_ARCH = NO;
-				MARKETING_VERSION = 0.1.7;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -513,6 +517,14 @@
 				minimumVersion = 0.1.9;
 			};
 		};
+		D0E764262C3C1E6D00E662F3 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = exactVersion;
+				version = 2.6.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -520,6 +532,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D040E2402667A4FC00495B2D /* XCRemoteSwiftPackageReference "AlfredSwift" */;
 			productName = Alfred;
+		};
+		D0E764272C3C1E6D00E662F3 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0E764262C3C1E6D00E662F3 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -47,7 +47,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>LSUIElement</key>
@@ -62,5 +62,11 @@
 	<true/>
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUFeedURL</key>
+	<string>https://github.com/mr-pennyworth/alfred-extra-pane/releases/latest/download/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>BAurF5ltFG9az2kGR/+01BftlDBsNg/vm7NGgdP4JNI=</string>
 </dict>
 </plist>

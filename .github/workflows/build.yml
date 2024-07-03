@@ -19,21 +19,14 @@ jobs:
       - name: Xcode version
         run: /usr/bin/xcodebuild -version
 
+      - name: Get Previous Tag
+        run: echo "PREVIOUS_TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+
       - name: Get App Version
-        id: get_version
         run: echo "APP_VERSION=$(xcodebuild -showBuildSettings | grep MARKETING_VERSION | cut -f2 -d = | tr -d '[:space:]')" >> $GITHUB_ENV
 
-      - name: Check if tag exists
-        id: check_tag
-        run: |
-          if git rev-parse "refs/tags/${{ env.APP_VERSION }}" >/dev/null 2>&1; then
-            echo "TAG_EXISTS=true" >> $GITHUB_ENV
-          else
-            echo "TAG_EXISTS=false" >> $GITHUB_ENV
-          fi
-
       - name: Get commit messages since last release
-        if: env.TAG_EXISTS == 'false'
+        if: env.PREVIOUS_TAG != env.APP_VERSION
         run: |
           LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
           if [ -z "$LAST_TAG" ]; then
@@ -47,7 +40,7 @@ jobs:
 
       - name: Create Release
         id: create_release
-        if: env.TAG_EXISTS == 'false'
+        if: env.PREVIOUS_TAG != env.APP_VERSION
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -61,19 +54,45 @@ jobs:
           prerelease: false
 
       - name: Build App
-        if: env.TAG_EXISTS == 'false'
-        run: xcodebuild -project AlfredExtraPane.xcodeproj -configuration Release -scheme AlfredExtraPane -derivedDataPath DerivedData build
+        if: env.PREVIOUS_TAG != env.APP_VERSION
+        # Don't code sign as sparkle complains that the signature is corrupt.
+        # At this moment, we don't see any value in figuring out how exactly
+        # the code signature is corrupt.
+        run: xcodebuild -project AlfredExtraPane.xcodeproj -configuration Release -scheme AlfredExtraPane -derivedDataPath DerivedData clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 
       - name: Copy Built App
-        if: env.TAG_EXISTS == 'false'
+        if: env.PREVIOUS_TAG != env.APP_VERSION
         run: cp -r DerivedData/Build/Products/Release/AlfredExtraPane.app ./
 
       - name: Zip App
-        if: env.TAG_EXISTS == 'false'
+        if: env.PREVIOUS_TAG != env.APP_VERSION
         run: zip -r AlfredExtraPane.app.zip AlfredExtraPane.app
 
+      - name: Get Sparkle Private Signing Key
+        if: env.PREVIOUS_TAG != env.APP_VERSION
+        env:
+          SPARKLE_PRIVATE_SIGNING_KEY: ${{ secrets.SPARKLE_PRIVATE_SIGNING_KEY }}
+        run: |
+          echo "$SPARKLE_PRIVATE_SIGNING_KEY" > sparkle_private_signing.key
+
+      - name: Generate Appcast XML
+        if: env.PREVIOUS_TAG != env.APP_VERSION
+        run: bash gen-appcast.sh "$APP_VERSION" "$PREVIOUS_TAG" sparkle_private_signing.key
+
+      - name: Upload Appcast XML
+        if: env.PREVIOUS_TAG != env.APP_VERSION
+        id: upload-appcast-xml
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./appcast.xml
+          asset_name: appcast.xml
+          asset_content_type: application/xml
+
       - name: Upload Release Asset
-        if: env.TAG_EXISTS == 'false'
+        if: env.PREVIOUS_TAG != env.APP_VERSION
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
