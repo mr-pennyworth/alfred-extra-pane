@@ -9,7 +9,9 @@ jobs:
     steps:
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Don't shallow-copy the repo. Need all the tags.
 
       - name: Select Xcode
         run: sudo xcode-select -switch /Applications/Xcode_15.2.app
@@ -18,10 +20,21 @@ jobs:
         run: /usr/bin/xcodebuild -version
 
       - name: Get App Version
+        id: get_version
         run: echo "APP_VERSION=$(xcodebuild -showBuildSettings | grep MARKETING_VERSION | cut -f2 -d = | tr -d '[:space:]')" >> $GITHUB_ENV
+
+      - name: Check if tag exists
+        id: check_tag
+        run: |
+          if git rev-parse "refs/tags/${{ env.APP_VERSION }}" >/dev/null 2>&1; then
+            echo "TAG_EXISTS=true" >> $GITHUB_ENV
+          else
+            echo "TAG_EXISTS=false" >> $GITHUB_ENV
+          fi
 
       - name: Create Release
         id: create_release
+        if: env.TAG_EXISTS == 'false'
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -31,18 +44,20 @@ jobs:
           draft: false
           prerelease: false
 
-      # If app version didn't change, the create-release thing above will fail, saving us unnecessary builds
-
       - name: Build App
+        if: env.TAG_EXISTS == 'false'
         run: xcodebuild -project AlfredExtraPane.xcodeproj -configuration Release -scheme AlfredExtraPane -derivedDataPath DerivedData build
 
       - name: Copy Built App
+        if: env.TAG_EXISTS == 'false'
         run: cp -r DerivedData/Build/Products/Release/AlfredExtraPane.app ./
 
       - name: Zip App
+        if: env.TAG_EXISTS == 'false'
         run: zip -r AlfredExtraPane.app.zip AlfredExtraPane.app
 
       - name: Upload Release Asset
+        if: env.TAG_EXISTS == 'false'
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
