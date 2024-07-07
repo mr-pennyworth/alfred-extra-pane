@@ -32,6 +32,19 @@ jobs:
             echo "TAG_EXISTS=false" >> $GITHUB_ENV
           fi
 
+      - name: Get commit messages since last release
+        if: env.TAG_EXISTS == 'false'
+        run: |
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$LAST_TAG" ]; then
+            COMMIT_LIST=$(git log --pretty=format:"<li>%s</li>" --reverse)
+          else
+            COMMIT_LIST=$(git log ${LAST_TAG}..HEAD --pretty=format:"<li>%s</li>" --reverse)
+          fi
+          echo "COMMIT_LIST<<EOF" >> $GITHUB_ENV
+          echo "<ul>${COMMIT_LIST}</ul>" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
       - name: Create Release
         id: create_release
         if: env.TAG_EXISTS == 'false'
@@ -41,6 +54,9 @@ jobs:
         with:
           tag_name: ${{ env.APP_VERSION }}
           release_name: ${{ env.APP_VERSION }}
+          body: |
+            Changes in this release:
+            ${{ env.COMMIT_LIST }}
           draft: false
           prerelease: false
 
