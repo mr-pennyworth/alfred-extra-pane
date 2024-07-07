@@ -15,20 +15,10 @@
 		D07360EA2C3237F600739755 /* NSColorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07360E92C3237F600739755 /* NSColorExtensionTests.swift */; };
 		D08B6EE5266F31790099EB36 /* Pane.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B6EE4266F31790099EB36 /* Pane.swift */; };
 		D08B6EE7266F9B520099EB36 /* PanePositionCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B6EE6266F9B520099EB36 /* PanePositionCodable.swift */; };
-		D08B6EEF26704DE30099EB36 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B6EEE26704DE30099EB36 /* main.swift */; };
-		D08B6EFB267050900099EB36 /* wflist in CopyFiles */ = {isa = PBXBuildFile; fileRef = D08B6EEC26704DE20099EB36 /* wflist */; };
 		D0B3E0A42B8A1F3A008EA695 /* AlfredExtraPaneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3E0A32B8A1F3A008EA695 /* AlfredExtraPaneTests.swift */; };
-		D0CE992A267057CA00DB243A /* Alfred in Frameworks */ = {isa = PBXBuildFile; productRef = D0CE9929267057CA00DB243A /* Alfred */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D08B6EF8267050490099EB36 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D03EA8C725551E0400D3656E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D08B6EEB26704DE20099EB36;
-			remoteInfo = wflist;
-		};
 		D0B3E0A52B8A1F3A008EA695 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D03EA8C725551E0400D3656E /* Project object */;
@@ -49,22 +39,12 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D08B6EEA26704DE20099EB36 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
 		D08B6EFA267050670099EB36 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
-				D08B6EFB267050900099EB36 /* wflist in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,8 +60,6 @@
 		D07360E92C3237F600739755 /* NSColorExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtensionTests.swift; sourceTree = "<group>"; };
 		D08B6EE4266F31790099EB36 /* Pane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pane.swift; sourceTree = "<group>"; };
 		D08B6EE6266F9B520099EB36 /* PanePositionCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanePositionCodable.swift; sourceTree = "<group>"; };
-		D08B6EEC26704DE20099EB36 /* wflist */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = wflist; sourceTree = BUILT_PRODUCTS_DIR; };
-		D08B6EEE26704DE30099EB36 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D0B3E0A12B8A1F39008EA695 /* AlfredExtraPaneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlfredExtraPaneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B3E0A32B8A1F3A008EA695 /* AlfredExtraPaneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlfredExtraPaneTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,14 +70,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D040E2422667A4FC00495B2D /* Alfred in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D08B6EE926704DE20099EB36 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D0CE992A267057CA00DB243A /* Alfred in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,7 +87,6 @@
 			isa = PBXGroup;
 			children = (
 				D03EA8D125551E0400D3656E /* AlfredExtraPane */,
-				D08B6EED26704DE30099EB36 /* wflist */,
 				D0B3E0A22B8A1F3A008EA695 /* AlfredExtraPaneTests */,
 				D03EA8D025551E0400D3656E /* Products */,
 				D03EA8EE2555664C00D3656E /* Frameworks */,
@@ -130,7 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				D03EA8CF25551E0400D3656E /* AlfredExtraPane.app */,
-				D08B6EEC26704DE20099EB36 /* wflist */,
 				D0B3E0A12B8A1F39008EA695 /* AlfredExtraPaneTests.xctest */,
 			);
 			name = Products;
@@ -155,14 +123,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D08B6EED26704DE30099EB36 /* wflist */ = {
-			isa = PBXGroup;
-			children = (
-				D08B6EEE26704DE30099EB36 /* main.swift */,
-			);
-			path = wflist;
 			sourceTree = "<group>";
 		};
 		D0B3E0A22B8A1F3A008EA695 /* AlfredExtraPaneTests */ = {
@@ -190,7 +150,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				D08B6EF9267050490099EB36 /* PBXTargetDependency */,
 			);
 			name = AlfredExtraPane;
 			packageProductDependencies = (
@@ -199,26 +158,6 @@
 			productName = AlfredExtraPane;
 			productReference = D03EA8CF25551E0400D3656E /* AlfredExtraPane.app */;
 			productType = "com.apple.product-type.application";
-		};
-		D08B6EEB26704DE20099EB36 /* wflist */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D08B6EF026704DE30099EB36 /* Build configuration list for PBXNativeTarget "wflist" */;
-			buildPhases = (
-				D08B6EE826704DE20099EB36 /* Sources */,
-				D08B6EE926704DE20099EB36 /* Frameworks */,
-				D08B6EEA26704DE20099EB36 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = wflist;
-			packageProductDependencies = (
-				D0CE9929267057CA00DB243A /* Alfred */,
-			);
-			productName = wflist;
-			productReference = D08B6EEC26704DE20099EB36 /* wflist */;
-			productType = "com.apple.product-type.tool";
 		};
 		D0B3E0A02B8A1F39008EA695 /* AlfredExtraPaneTests */ = {
 			isa = PBXNativeTarget;
@@ -251,9 +190,6 @@
 					D03EA8CE25551E0400D3656E = {
 						CreatedOnToolsVersion = 11.7;
 					};
-					D08B6EEB26704DE20099EB36 = {
-						CreatedOnToolsVersion = 12.4;
-					};
 					D0B3E0A02B8A1F39008EA695 = {
 						CreatedOnToolsVersion = 15.2;
 						TestTargetID = D03EA8CE25551E0400D3656E;
@@ -277,7 +213,6 @@
 			projectRoot = "";
 			targets = (
 				D03EA8CE25551E0400D3656E /* AlfredExtraPane */,
-				D08B6EEB26704DE20099EB36 /* wflist */,
 				D0B3E0A02B8A1F39008EA695 /* AlfredExtraPaneTests */,
 			);
 		};
@@ -314,14 +249,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D08B6EE826704DE20099EB36 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D08B6EEF26704DE30099EB36 /* main.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D0B3E09D2B8A1F39008EA695 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -334,11 +261,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D08B6EF9267050490099EB36 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D08B6EEB26704DE20099EB36 /* wflist */;
-			targetProxy = D08B6EF8267050490099EB36 /* PBXContainerItemProxy */;
-		};
 		D0B3E0A62B8A1F3A008EA695 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D03EA8CE25551E0400D3656E /* AlfredExtraPane */;
@@ -505,36 +427,6 @@
 			};
 			name = Release;
 		};
-		D08B6EF126704DE30099EB36 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane.wflist;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		D08B6EF226704DE30099EB36 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane.wflist;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		D0B3E0A82B8A1F3A008EA695 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -601,15 +493,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D08B6EF026704DE30099EB36 /* Build configuration list for PBXNativeTarget "wflist" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D08B6EF126704DE30099EB36 /* Debug */,
-				D08B6EF226704DE30099EB36 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		D0B3E0A72B8A1F3A008EA695 /* Build configuration list for PBXNativeTarget "AlfredExtraPaneTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -634,11 +517,6 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		D040E2412667A4FC00495B2D /* Alfred */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D040E2402667A4FC00495B2D /* XCRemoteSwiftPackageReference "AlfredSwift" */;
-			productName = Alfred;
-		};
-		D0CE9929267057CA00DB243A /* Alfred */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D040E2402667A4FC00495B2D /* XCRemoteSwiftPackageReference "AlfredSwift" */;
 			productName = Alfred;
