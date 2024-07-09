@@ -22,6 +22,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let confs: [PaneConfig] =
       (try? read(contentsOf: configFile())) ?? [defaultConfig]
     panes = confs.map { Pane(config: $0) }
+    Alfred.onItemSelect { item in
+      // First, render panes that have exact match with workflowUID.
+      // Then, if no exact match is found, render the wildcard panes.
+      [
+        self.panes.filter({ $0.matchesExactly(item: item) }),
+        self.panes.filter({ $0.isWildcard })
+      ] .first(where: { !$0.isEmpty })?
+        .forEach({ pane in item.quicklookurl.map { pane.render($0) } })
+    }
   }
 
   func applicationDidFinishLaunching(_ notification: Notification) {

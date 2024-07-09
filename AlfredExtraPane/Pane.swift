@@ -29,15 +29,12 @@ class Pane {
 
     Alfred.onHide { self.hide() }
     Alfred.onFrameChange { self.alfredFrame = $0 }
-    Alfred.onItemSelect { item in
-      if (item.workflowuid == self.config.workflowUID)
-          || (self.config.workflowUID == "*") {
-        if let url = item.quicklookurl {
-          return self.render(url)
-        }
-      }
-      self.hide()
-    }
+  }
+
+  lazy var isWildcard: Bool = { self.config.workflowUID == "*" }()
+
+  func matchesExactly(item: Alfred.SelectedItem) -> Bool {
+    item.workflowuid == self.config.workflowUID
   }
 
   func render(_ url: URL) {
