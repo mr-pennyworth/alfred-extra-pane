@@ -80,12 +80,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     menu.addItem(NSMenuItem(
       title: "Check for Updates",
       action: #selector(checkForUpdates),
-      keyEquivalent: "u"
+      keyEquivalent: ""
     ))
+    menu.addItem(NSMenuItem.separator())
     menu.addItem(NSMenuItem(
       title: "Restart " + appName,
       action: #selector(restart),
-      keyEquivalent: "r"
+      keyEquivalent: ""
+    ))
+    menu.addItem(NSMenuItem(
+      title: "Quit " + appName,
+      action: #selector(quit),
+      keyEquivalent: "q"
     ))
 
     statusItem?.menu = menu
@@ -100,6 +106,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     task.launchPath = "/usr/bin/open"
     task.arguments = [Bundle.main.bundlePath]
     task.launch()
+    NSApplication.shared.terminate(nil)
+  }
+
+  @objc func quit() {
     NSApplication.shared.terminate(nil)
   }
 }
