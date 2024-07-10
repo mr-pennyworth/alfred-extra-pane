@@ -93,23 +93,44 @@ class Pane {
     window.setFrame(frame(), display: false)
     webView.setFrameOrigin(NSPoint(x: 0, y: 0))
     webView.setFrameSize(frame().size)
-    window.makeKeyAndOrderFront(self)
+    window.orderFront(self)
   }
 
   func hide() {
-    window.orderOut(self)
+    if !window.isKeyWindow {
+      window.orderOut(self)
+    }
   }
 }
 
 let cornerRadius =
   CGFloat((Alfred.theme["window-roundness"] as? Float) ?? 0)
 
+/// When an NSWindow is created with the borderless style mask, it can not
+/// become the key window. We want the extra pane to be borderless, and at
+/// the same time, we want the user to be able to click on the window so that
+/// it doesn't vanish on Alfred's disappearance.
+class ExtraPaneWindow: NSWindow {
+  override var canBecomeKey: Bool { true }
+
+  // When the window rendering is triggered due to Alfred's quicklookurl, we
+  // display the window, without making it the key window. In this case, the
+  // window should hide when Alfred hides. However, if the user clicks on the
+  // window, it becomes the key window and the user can interact with it, even
+  // after Alfred hides. For such a window, we want it to hide when it loses
+  // the focus.
+  override func resignKey() {
+    super.resignKey()
+    self.orderOut(nil)
+  }
+}
+
 func makeWindow() -> NSWindow {
   let windowColorHex =
     (Alfred.theme["window-color"] as? String) ?? "#1d1e28ff"
   let windowColor = NSColor.from(hex: windowColorHex)!
 
-  let window = NSWindow(
+  let window = ExtraPaneWindow(
     contentRect: .zero,
     styleMask: [.borderless, .fullSizeContentView],
     backing: .buffered,
