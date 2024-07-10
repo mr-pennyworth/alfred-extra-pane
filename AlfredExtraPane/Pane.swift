@@ -14,6 +14,7 @@ enum PanePosition: Equatable {
 public struct PaneConfig: Codable, Equatable {
   let alignment: PanePosition
   let workflowUID: String
+  let customUserAgent: String?
 }
 
 class Pane {
@@ -26,6 +27,9 @@ class Pane {
   init(config: PaneConfig) {
     self.config = config
     window.contentView!.addSubview(webView)
+    if let customUserAgent = config.customUserAgent {
+      webView.customUserAgent = customUserAgent
+    }
 
     Alfred.onHide { self.hide() }
     Alfred.onFrameChange { self.alfredFrame = $0 }

@@ -62,8 +62,21 @@ Check out the [tutorial](#tutorial) for a quick walk-through.
       and dimensions of the pane
 
 ## Configuration
-The appearance of the pane(s) can be configured by editing
+The pane(s) can be configured by editing
 `{/path/to}/Alfred.alfredpreferences/preferences/mr.pennyworth.AlfredExtraPane/config.json`
+
+Configurable parameters are:
+ - `workflowUID` (required):
+   `*` or a specific workflow UID (bundle IDs work too)
+ - `alignment` (required):
+    - `horizontal`
+       - `placement`: `left` or `right`
+       - `width`: width of the pane
+       - `minHeight`: minimum height of the pane
+    - `vertical`
+       - `placement`: `top` or `bottom`
+       - `height`: height of the pane
+ - `customUserAgent` (optional): User-Agent string for HTTP(S) URLs
 
 Here's an example with four panes configured:
 ```json

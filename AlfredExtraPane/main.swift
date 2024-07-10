@@ -8,7 +8,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var panes: [Pane] = []
   private let defaultConfig = PaneConfig(
     alignment: .horizontal(placement: .right, width: 300, minHeight: 400),
-    workflowUID: "*"
+    workflowUID: "*",
+    customUserAgent: nil
   )
   var statusItem: NSStatusItem?
   let updaterController = SPUStandardUpdaterController(
