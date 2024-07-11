@@ -11,13 +11,20 @@ enum PanePosition: Equatable {
   case vertical(placement: VerticalPlacement, height: Int)
 }
 
+public struct WorkflowPaneConfig {
+  let paneConfig: PaneConfig
+  /// A nil workflowUID means that this pane is a global pane,
+  /// applicable to all the workflows.
+  let workflowUID: String?
+}
+
 public struct PaneConfig: Codable, Equatable {
   let alignment: PanePosition
-  let workflowUID: String
   let customUserAgent: String?
 }
 
 class Pane {
+  let workflowUID: String? // nil for global panes
   let config: PaneConfig
   var alfredFrame: NSRect = .zero
   let window: NSWindow = makeWindow()
@@ -35,10 +42,10 @@ class Pane {
     Alfred.onFrameChange { self.alfredFrame = $0 }
   }
 
-  lazy var isWildcard: Bool = { self.config.workflowUID == "*" }()
+  lazy var isGlobal: Bool = { self.workflowUID == nil }()
 
   func matchesExactly(item: Alfred.SelectedItem) -> Bool {
-    item.workflowuid == self.config.workflowUID
+    item.workflowuid == self.workflowUID
   }
 
   func render(_ url: URL) {

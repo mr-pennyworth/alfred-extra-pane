@@ -58,16 +58,16 @@ Check out the [tutorial](#tutorial) for a quick walk-through.
 ## What's not yet supported?
  - Configurability
     - Workflows should be able to opt out of the extra pane
-    - Workflows should be able to configure the position
-      and dimensions of the pane
 
 ## Configuration
-The pane(s) can be configured by editing
-`{/path/to}/Alfred.alfredpreferences/preferences/mr.pennyworth.AlfredExtraPane/config.json`
+The global pane(s) can be configured by editing
+`{/path/to}/Alfred.alfredpreferences/preferences/mr.pennyworth.AlfredExtraPane/config.json`.
+Similarly, pane(s) for individual workflows can be configured by editing
+`{workflow-dir}/extra-pane-config.json`. If there are any workflow-specific
+panes, the items produced from that workflow will not be shown in the global
+panes.
 
 Configurable parameters are:
- - `workflowUID` (required):
-   `*` or a specific workflow UID (bundle IDs work too)
  - `alignment` (required):
     - `horizontal`
        - `placement`: `left` or `right`
@@ -81,19 +81,15 @@ Configurable parameters are:
 Here's an example with four panes configured:
 ```json
 [{
-  "workflowUID" : "*",
   "alignment" : {
     "horizontal" : {"placement" : "right", "width" : 300, "minHeight" : 400}}
 }, {
-  "workflowUID" : "*",
   "alignment" : {
     "horizontal" : {"placement" : "left", "width" : 300, "minHeight" : 400}}
 }, {
-  "workflowUID" : "*",
   "alignment" : {
     "vertical" : {"placement" : "top", "height" : 100}}
 }, {
-  "workflowUID" : "*",
   "alignment" : {
     "vertical" : {"placement" : "bottom", "height" : 200}}
 }]

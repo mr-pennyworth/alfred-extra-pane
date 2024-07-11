@@ -3,12 +3,14 @@ import AppKit
 import Foundation
 import Sparkle
 
+let globalConfigFilename = "config.json"
+let workflowConfigFilename = "extra-pane-config.json"
+
 class AppDelegate: NSObject, NSApplicationDelegate {
   let fs = FileManager.default
   var panes: [Pane] = []
   private let defaultConfig = PaneConfig(
     alignment: .horizontal(placement: .right, width: 300, minHeight: 400),
-    workflowUID: "*",
     customUserAgent: nil
   )
   var statusItem: NSStatusItem?
@@ -20,15 +22,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
   override init() {
     super.init()
-    let confs: [PaneConfig] =
-      (try? read(contentsOf: configFile())) ?? [defaultConfig]
-    panes = confs.map { Pane(config: $0) }
+    let confs = globalConfigs() + workflowConfigs()
+    dump(confs)
+    panes = confs.map { Pane(workflowPaneConfig: $0) }
     Alfred.onItemSelect { item in
       // First, render panes that have exact match with workflowUID.
       // Then, if no exact match is found, render the wildcard panes.
       [
         self.panes.filter({ $0.matchesExactly(item: item) }),
-        self.panes.filter({ $0.isWildcard })
+        self.panes.filter({ $0.isGlobal })
       ] .first(where: { !$0.isEmpty })?
         .forEach({ pane in item.quicklookurl.map { pane.render($0) } })
     }
@@ -63,12 +65,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     return prefsDir
   }
 
-  func configFile() throws -> URL {
-    let conf = try! appPrefsDir().appendingPathComponent("config.json")
+  func globalConfigFile() throws -> URL {
+    let conf = try! appPrefsDir().appendingPathComponent(globalConfigFilename)
     if !fs.fileExists(atPath: conf.path) {
       write([defaultConfig], to: conf)
     }
     return conf
+  }
+
+  func globalConfigs() -> [WorkflowPaneConfig] {
+    ((try? read(contentsOf: globalConfigFile())) ?? [defaultConfig])
+      .map { WorkflowPaneConfig(paneConfig: $0, workflowUID: nil) }
+  }
+
+  func workflowConfigs() -> [WorkflowPaneConfig] {
+    Alfred.workflows().flatMap { wf in
+      let confPath = wf.dir.appendingPathComponent(workflowConfigFilename)
+      let confs: [PaneConfig] = read(contentsOf: confPath) ?? []
+      return confs.map {
+        WorkflowPaneConfig(paneConfig: $0, workflowUID: wf.uid)
+      }
+    }
   }
 
   func setupMenubarExtra() {
