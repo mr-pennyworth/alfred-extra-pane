@@ -27,7 +27,7 @@ extension AppDelegate {
       action: #selector(openFileAction(_:)),
       keyEquivalent: ""
     )
-    globalConfigMenuItem.representedObject = try? globalConfigFile()
+    globalConfigMenuItem.representedObject = globalConfigFile
     configureMenu.addItem(globalConfigMenuItem)
     configureMenu.addItem(NSMenuItem.separator())
     for workflow in Alfred.workflows().sorted(by: {$0.name < $1.name}) {

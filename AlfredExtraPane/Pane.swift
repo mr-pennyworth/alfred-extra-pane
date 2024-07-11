@@ -16,11 +16,20 @@ public struct WorkflowPaneConfig {
   /// A nil workflowUID means that this pane is a global pane,
   /// applicable to all the workflows.
   let workflowUID: String?
+
+  func dir() -> URL {
+    if let uid = workflowUID {
+      return Alfred.workflows().first(where: { $0.uid == uid })!.dir
+    } else {
+      return appPrefsDir
+    }
+  }
 }
 
 public struct PaneConfig: Codable, Equatable {
   let alignment: PanePosition
   let customUserAgent: String?
+  let customCSSFilename: String?
 }
 
 class Pane {
@@ -28,15 +37,18 @@ class Pane {
   let config: PaneConfig
   var alfredFrame: NSRect = .zero
   let window: NSWindow = makeWindow()
-  let webView: WKWebView = makeWebView()
   let margin: CGFloat = 5
 
-  init(config: PaneConfig) {
-    self.config = config
+  private lazy var webView: WKWebView = {
+    makeWebView(
+      WorkflowPaneConfig(paneConfig: config, workflowUID: workflowUID)
+    )
+  }()
+
+  init(workflowPaneConfig: WorkflowPaneConfig) {
+    self.config = workflowPaneConfig.paneConfig
+    self.workflowUID = workflowPaneConfig.workflowUID
     window.contentView!.addSubview(webView)
-    if let customUserAgent = config.customUserAgent {
-      webView.customUserAgent = customUserAgent
-    }
 
     Alfred.onHide { self.hide() }
     Alfred.onFrameChange { self.alfredFrame = $0 }
@@ -52,8 +64,9 @@ class Pane {
     if url.isFileURL {
       if url.absoluteString.hasSuffix(".html") {
         let dir = url.deletingLastPathComponent()
-        webView.loadFileURL(injectCSS(url), allowingReadAccessTo: dir)
+        webView.loadFileURL(url, allowingReadAccessTo: dir)
       } else {
+        log("skipping displaying '\(url)' as it isn't HTML")
         return
       }
     } else {
@@ -198,7 +211,7 @@ func makeWindow() -> NSWindow {
   return window
 }
 
-func makeWebView() -> WKWebView {
+func makeWebView(_ workflowPaneConfig: WorkflowPaneConfig) -> WKWebView {
   let conf = WKWebViewConfiguration()
   conf.preferences.setValue(true, forKey: "developerExtrasEnabled")
 
@@ -208,32 +221,28 @@ func makeWebView() -> WKWebView {
   // quick fix is to disable autoplay).
   conf.mediaTypesRequiringUserActionForPlayback = .all
 
-  let webView = WKWebView(frame: .zero, configuration: conf)
+  var cssString = Alfred.themeCSS
+  if let wfCSSFilename = workflowPaneConfig.paneConfig.customCSSFilename {
+    let wfCSSFile =
+      workflowPaneConfig.dir().appendingPathComponent(wfCSSFilename)
+    if let wfCSSString = try? String(contentsOf: wfCSSFile) {
+      cssString += "\n" + wfCSSString
+    } else {
+      log("Failed to read custom CSS file: \(wfCSSFile)")
+    }
+  }
+
+  let webView = InjectedCSSWKWebView(
+    frame: .zero,
+    configuration: conf,
+    cssString: cssString
+  )
+  if let userAgent = workflowPaneConfig.paneConfig.customUserAgent {
+    webView.customUserAgent = userAgent
+  }
   webView.backgroundColor = .clear
   webView.setValue(false, forKey: "drawsBackground")
   webView.wantsLayer = true
   webView.layer?.cornerRadius = cornerRadius
   return webView
-}
-
-func injectCSS(_ html: String) -> String {
-  var cssContainer = "body"
-  if html.contains("</head>") {
-    cssContainer = "head"
-  }
-  return html.replacingOccurrences(
-    of: "</\(cssContainer)>",
-    with: "<style>\n\(Alfred.themeCSS)</style></\(cssContainer)>"
-  )
-}
-
-func injectCSS(_ fileUrl: URL) -> URL {
-  // if you load html into webview using loadHTMLString,
-  // the resultant webview can't be given access to filesystem
-  // that means all the css and js references won't resolve anymore
-  let injectedHtmlPath = fileUrl.path + ".injected.html"
-  let injectedHtmlUrl = URL(fileURLWithPath: injectedHtmlPath)
-  let injectedHtml = readFile(named: fileUrl.path, then: injectCSS)!
-  try! injectedHtml.write(to: injectedHtmlUrl, atomically: true, encoding: .utf8)
-  return injectedHtmlUrl
 }
