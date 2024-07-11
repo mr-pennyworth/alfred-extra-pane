@@ -67,6 +67,11 @@ Similarly, pane(s) for individual workflows can be configured by editing
 panes, the items produced from that workflow will not be shown in the global
 panes.
 
+Alternatively, you can use the `Configure > Global` menu to open the global
+config JSON file in your default editor. Similarly,
+`Configure > [Workflow Name]` opens the workflow-specific config file.
+![](media/configure-menu.png)
+
 Configurable parameters are:
  - `alignment` (required):
     - `horizontal`

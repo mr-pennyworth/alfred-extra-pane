@@ -26,6 +26,13 @@ func readFile<T>(named: String, then: (String) -> T) -> T? {
   }
 }
 
+func openFile(atPath path: String) {
+  let task = Process()
+  task.launchPath = "/usr/bin/open"
+  task.arguments = [path]
+  task.launch()
+}
+
 // src: https://stackoverflow.com/a/26406426
 extension URL {
   var queryParameters: QueryParameters { return QueryParameters(url: self) }

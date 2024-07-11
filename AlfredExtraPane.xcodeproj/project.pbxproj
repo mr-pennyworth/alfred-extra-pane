@@ -17,6 +17,7 @@
 		D08B6EE7266F9B520099EB36 /* PanePositionCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B6EE6266F9B520099EB36 /* PanePositionCodable.swift */; };
 		D0B3E0A42B8A1F3A008EA695 /* AlfredExtraPaneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3E0A32B8A1F3A008EA695 /* AlfredExtraPaneTests.swift */; };
 		D0E764282C3C1E6D00E662F3 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = D0E764272C3C1E6D00E662F3 /* Sparkle */; };
+		D0FCE9412C40049200F5006C /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FCE9402C40049200F5006C /* Menu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		D08B6EE6266F9B520099EB36 /* PanePositionCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanePositionCodable.swift; sourceTree = "<group>"; };
 		D0B3E0A12B8A1F39008EA695 /* AlfredExtraPaneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlfredExtraPaneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B3E0A32B8A1F3A008EA695 /* AlfredExtraPaneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlfredExtraPaneTests.swift; sourceTree = "<group>"; };
+		D0FCE9402C40049200F5006C /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				D01646B9255AF27A00646F0C /* utils.swift */,
 				D08B6EE4266F31790099EB36 /* Pane.swift */,
 				D08B6EE6266F9B520099EB36 /* PanePositionCodable.swift */,
+				D0FCE9402C40049200F5006C /* Menu.swift */,
 			);
 			path = AlfredExtraPane;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0FCE9412C40049200F5006C /* Menu.swift in Sources */,
 				D03EA8D325551E0400D3656E /* main.swift in Sources */,
 				D08B6EE5266F31790099EB36 /* Pane.swift in Sources */,
 				D04F70D5255893B3008E17A4 /* NSColorExtension.swift in Sources */,

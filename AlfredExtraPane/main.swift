@@ -87,58 +87,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       }
     }
   }
-
-  func setupMenubarExtra() {
-    let appName =
-      Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String
-    statusItem =
-      NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    if let button = statusItem?.button {
-      let image = NSImage(
-        systemSymbolName: "sidebar.right",
-        accessibilityDescription: appName + " Menu"
-      )
-      image?.isTemplate = true
-      button.image = image
-      button.toolTip = appName
-    }
-
-    let menu = NSMenu()
-    menu.addItem(NSMenuItem(
-      title: "Check for Updates",
-      action: #selector(checkForUpdates),
-      keyEquivalent: ""
-    ))
-    menu.addItem(NSMenuItem.separator())
-    menu.addItem(NSMenuItem(
-      title: "Restart " + appName,
-      action: #selector(restart),
-      keyEquivalent: ""
-    ))
-    menu.addItem(NSMenuItem(
-      title: "Quit " + appName,
-      action: #selector(quit),
-      keyEquivalent: "q"
-    ))
-
-    statusItem?.menu = menu
-  }
-
-  @objc func checkForUpdates() {
-    updaterController.checkForUpdates(nil)
-  }
-
-  @objc func restart() {
-    let task = Process()
-    task.launchPath = "/usr/bin/open"
-    task.arguments = [Bundle.main.bundlePath]
-    task.launch()
-    NSApplication.shared.terminate(nil)
-  }
-
-  @objc func quit() {
-    NSApplication.shared.terminate(nil)
-  }
 }
 
 autoreleasepool {
