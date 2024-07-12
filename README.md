@@ -150,9 +150,6 @@ to `/tmp/one.html`:
 <html>
   <head>
     <style>
-      html {
-          background-color: var(--result-backgroundSelected);
-      }
       h1 {
           color: var(--result-text-colorSelected);
       }
@@ -164,7 +161,5 @@ to `/tmp/one.html`:
 </html>
 ```
 
-Themed previews should show up:
-
-| ![](media/tutorial-images/alfred-4.png) | ![](media/tutorial-images/alfred-5.png) |
-|-|-|
+Themed preview should show up:
+![](media/tutorial-images/alfred-4.png)
