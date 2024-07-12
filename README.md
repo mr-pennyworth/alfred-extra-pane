@@ -53,11 +53,22 @@ The CSS looks like this:
 ```
 As a workflow author, when you generate the HTML, use these
 variables in it. The pane will make sure they're injected.
-Check out the [tutorial](#tutorial) for a quick walk-through.
+Check out the [toy example](#toy-example) for a quick walk-through.
 
 ## What's not yet supported?
  - Configurability
     - Workflows should be able to opt out of the extra pane
+
+## Installation
+ - [Download](https://github.com/mr-pennyworth/alfred-extra-pane/releases/latest/)
+   and extract `AlfredExtraPane.app.zip`.
+ - Move the extracted `AlfredExtraPane.app` to `/Applications`.
+ - Right-click on the app, and click `Open`: ![](media/install-attempt-1.png)
+ - Since this app isn't signed with any developer certificate, macOS shows a
+   warning. Click `Cancel`: ![](media/install-attempt-1-result.png)
+ - Again, right-click on the app, and click `Open`.
+ - The warning dialog is different this time. It now allows to open the app.
+   Click `Open`: ![](media/install-attempt-2-result.png)
 
 ## Configuration
 The global pane(s) can be configured by editing
