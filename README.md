@@ -104,7 +104,7 @@ Here's an example with four panes configured:
 ```
 ![](media/multi-pane.png)
 
-## Tutorial
+## Toy Example
 Here's a script filter that produces a result:
 ![](media/tutorial-images/script.png)
 
@@ -166,3 +166,93 @@ to `/tmp/one.html`:
 
 Themed preview should show up:
 ![](media/tutorial-images/alfred-4.png)
+
+## Tutorial: Search Google as you type
+Here's a script filter that builds a Google search URL as you type:
+![](media/tutorial-images/google-script.png)
+
+```shell
+q="$1"
+
+function urlencode {
+  echo -n "$1" \
+   | /usr/bin/python3 -c "import sys, urllib.parse; print(urllib.parse.quote_plus(sys.stdin.read()),end='')"
+}
+
+url_q=$(urlencode "$1")
+
+cat << EOF
+{"items" : [
+  {"title": "Search $q",
+   "subtitle": "using google.com",
+   "arg": "https://www.google.com/search?q=$url_q",
+   "quicklookurl": "https://www.google.com/search?q=$url_q"}
+]}
+EOF
+```
+
+Connecting this script filter to an "Open URL" action
+makes sure that pressing enter opens the URL in the default browser:
+![](media/tutorial-images/google-script-connection.png)
+
+If `AlfredExtraPane` is running, the preview will show up as you type:
+![](media/tutorial-images/google-orig.png)
+
+### Customize Pane Placement
+The placement of the pane on the right doesn't seem to be the best
+choice for this workflow. Let's change it to the bottom. From the
+`Configure` menu, open the config file for `Google Search`.
+
+Since we're configuring the pane for this workflow, for the first time,
+the file will be empty: ![](media/tutorial-images/google-config-empty.png)
+
+Let's change it to:
+```json
+[{
+  "alignment" : {"vertical" : {"placement" : "bottom", "height" : 600}}
+}]
+```
+
+Restarting the app will show the pane at the bottom:
+![](media/tutorial-images/google-bottom.png)
+
+### Show Mobile Version of Google with Custom User-Agent
+We see that the desktop version of Google is shown in the preview,
+where the text gets clipped on the right, and horizontal scrolling
+is needed. Google's mobile version is more suitable for us here.
+
+Let's change the User-Agent to a mobile browser's:
+```json
+[{
+  "alignment" : {"vertical" : {"placement" : "bottom", "height" : 600}}, 
+  "customUserAgent": "Mozilla/5.0 (Linux; Android 8.0; Pixel 2 Build/OPD3.170816.012) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Mobile Safari/537.36"
+}]
+```
+
+Restarting the app will show the mobile version of Google.
+Turns out, the mobile version respects macOS's dark mode too:
+![](media/tutorial-images/google-mobile.png)
+
+### Fine-Tune Webpages with Custom CSS
+Precious screen real-estate is wasted by the Google logo and the search
+bar. Let's hide them with a custom CSS file.
+
+Create `style.css` in the same directory as the JSON config file:
+```css
+header {
+  display: none;
+}
+```
+
+Add the `customCSSFilename` key to the JSON config:
+```json
+[{
+  "alignment" : {"vertical" : {"placement" : "bottom", "height" : 600}},
+  "customUserAgent": "Mozilla/5.0 (Linux; Android 8.0; Pixel 2 Build/OPD3.170816.012) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Mobile Safari/537.36"
+  "customCSSFilename": "style.css"
+}]
+```
+
+Restarting the app will show the pane with the Google logo and search
+bar hidden:
+![](media/tutorial-images/google-mobile-compact.png)
