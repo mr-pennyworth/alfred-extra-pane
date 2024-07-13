@@ -60,6 +60,14 @@ Check out the [toy example](#toy-example) for a quick walk-through.
     - Workflows should be able to opt out of the extra pane
 
 ## Installation
+
+### Using a Script
+Run the following command in the terminal:
+```shell
+curl -sL https://raw.githubusercontent.com/mr-pennyworth/alfred-extra-pane/main/install.sh | sh
+```
+
+### Manual Installation
  - [Download](https://github.com/mr-pennyworth/alfred-extra-pane/releases/latest/)
    and extract `AlfredExtraPane.app.zip`.
  - Move the extracted `AlfredExtraPane.app` to `/Applications`.
@@ -259,7 +267,7 @@ Add the `customCSSFilename` key to the JSON config:
 ```json
 [{
   "alignment" : {"vertical" : {"placement" : "bottom", "height" : 600}},
-  "customUserAgent": "Mozilla/5.0 (Linux; Android 8.0; Pixel 2 Build/OPD3.170816.012) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Mobile Safari/537.36"
+  "customUserAgent": "Mozilla/5.0 (Linux; Android 8.0; Pixel 2 Build/OPD3.170816.012) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Mobile Safari/537.36",
   "customCSSFilename": "style.css"
 }]
 ```
