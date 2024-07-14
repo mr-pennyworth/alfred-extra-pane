@@ -31,7 +31,8 @@ let globalConfigFile: URL = {
     alignment: .horizontal(placement: .right, width: 300, minHeight: 400),
     customUserAgent: nil,
     customCSSFilename: nil,
-    customJSFilename: nil
+    customJSFilename: nil,
+    staticPaneConfig: nil
   )
   if !fs.fileExists(atPath: conf.path) {
     write([defaultConfig], to: conf)

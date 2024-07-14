@@ -26,11 +26,21 @@ public struct WorkflowPaneConfig {
   }
 }
 
+/// While a non-static pane renders the URL in Alfred item's `quicklookurl`,
+/// a static pane renders the URL in the pane's configuration once, and then uses
+/// the `quicklookurl` as a text file containing the input to be passed
+/// to the JavaScript `function`.
+public struct StaticPaneConfig: Codable, Equatable {
+  let initURL: URL
+  let function: String
+}
+
 public struct PaneConfig: Codable, Equatable {
   let alignment: PanePosition
   let customUserAgent: String?
   let customCSSFilename: String?
   let customJSFilename: String?
+  let staticPaneConfig: StaticPaneConfig?
 }
 
 class Pane {
@@ -51,6 +61,10 @@ class Pane {
     self.workflowUID = workflowPaneConfig.workflowUID
     window.contentView!.addSubview(webView)
 
+    if let staticConf = self.config.staticPaneConfig {
+      webView.load(URLRequest(url: staticConf.initURL))
+    }
+
     Alfred.onHide { self.hide() }
     Alfred.onFrameChange { self.alfredFrame = $0 }
   }
@@ -62,7 +76,16 @@ class Pane {
   }
 
   func render(_ url: URL) {
-    if url.isFileURL {
+    if let staticConf = config.staticPaneConfig {
+      if let arg = try? String(contentsOf: url) {
+        let safeArg = arg.replacingOccurrences(of: "`", with: "\\`")
+        let js = "\(staticConf.function)(`\(safeArg)`)"
+        log("evaluating JS: \(js)")
+        webView.evaluateJavaScript(js)
+      } else {
+        log("failed to read '\(url)' as text file")
+      }
+    } else if url.isFileURL {
       if url.absoluteString.hasSuffix(".html") {
         let dir = url.deletingLastPathComponent()
         webView.loadFileURL(url, allowingReadAccessTo: dir)

@@ -18,7 +18,11 @@ final class AlfredExtraPaneTests: XCTestCase {
   "customJSFilename": "script.js"
 }, {
   "alignment" : {
-    "vertical" : {"placement" : "bottom", "height" : 200}}
+    "vertical" : {"placement" : "bottom", "height" : 200}},
+  "staticPaneConfig": {
+    "initURL": "https://example.com",
+    "function": "render"
+  }
 }]
 """.data(using: .utf8)!
 
@@ -27,25 +31,32 @@ final class AlfredExtraPaneTests: XCTestCase {
         alignment: .horizontal(placement: .right, width: 300, minHeight: 400),
         customUserAgent: "agent of S.H.I.E.L.D.",
         customCSSFilename: nil,
-        customJSFilename: nil
+        customJSFilename: nil,
+        staticPaneConfig: nil
       ),
       AlfredExtraPane.PaneConfig(
         alignment: .horizontal(placement: .left, width: 300, minHeight: nil),
         customUserAgent: nil,
         customCSSFilename: "style.css",
-        customJSFilename: nil
+        customJSFilename: nil,
+        staticPaneConfig: nil
       ),
       AlfredExtraPane.PaneConfig(
         alignment: .vertical(placement: .top, height: 100),
         customUserAgent: nil,
         customCSSFilename: nil,
-        customJSFilename: "script.js"
+        customJSFilename: "script.js",
+        staticPaneConfig: nil
       ),
       AlfredExtraPane.PaneConfig(
         alignment: .vertical(placement: .bottom, height: 200),
         customUserAgent: nil,
         customCSSFilename: nil,
-        customJSFilename: nil
+        customJSFilename: nil,
+        staticPaneConfig: StaticPaneConfig(
+          initURL: URL(string: "https://example.com")!,
+          function: "render"
+        )
       )
     ]
     let decoded = try! JSONDecoder().decode(
