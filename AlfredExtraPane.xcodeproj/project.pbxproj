@@ -18,7 +18,7 @@
 		D0B3E0A42B8A1F3A008EA695 /* AlfredExtraPaneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B3E0A32B8A1F3A008EA695 /* AlfredExtraPaneTests.swift */; };
 		D0E764282C3C1E6D00E662F3 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = D0E764272C3C1E6D00E662F3 /* Sparkle */; };
 		D0FCE9412C40049200F5006C /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FCE9402C40049200F5006C /* Menu.swift */; };
-		D0FCE9432C400A7600F5006C /* CSSInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FCE9422C400A7600F5006C /* CSSInjection.swift */; };
+		D0FCE9432C400A7600F5006C /* WebViewInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FCE9422C400A7600F5006C /* WebViewInjection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +66,7 @@
 		D0B3E0A12B8A1F39008EA695 /* AlfredExtraPaneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlfredExtraPaneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B3E0A32B8A1F3A008EA695 /* AlfredExtraPaneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlfredExtraPaneTests.swift; sourceTree = "<group>"; };
 		D0FCE9402C40049200F5006C /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
-		D0FCE9422C400A7600F5006C /* CSSInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSSInjection.swift; sourceTree = "<group>"; };
+		D0FCE9422C400A7600F5006C /* WebViewInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewInjection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +121,7 @@
 				D08B6EE4266F31790099EB36 /* Pane.swift */,
 				D08B6EE6266F9B520099EB36 /* PanePositionCodable.swift */,
 				D0FCE9402C40049200F5006C /* Menu.swift */,
-				D0FCE9422C400A7600F5006C /* CSSInjection.swift */,
+				D0FCE9422C400A7600F5006C /* WebViewInjection.swift */,
 			);
 			path = AlfredExtraPane;
 			sourceTree = "<group>";
@@ -256,7 +256,7 @@
 				D08B6EE5266F31790099EB36 /* Pane.swift in Sources */,
 				D04F70D5255893B3008E17A4 /* NSColorExtension.swift in Sources */,
 				D08B6EE7266F9B520099EB36 /* PanePositionCodable.swift in Sources */,
-				D0FCE9432C400A7600F5006C /* CSSInjection.swift in Sources */,
+				D0FCE9432C400A7600F5006C /* WebViewInjection.swift in Sources */,
 				D01646BA255AF27A00646F0C /* utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

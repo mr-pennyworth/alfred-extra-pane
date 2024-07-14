@@ -14,7 +14,8 @@ final class AlfredExtraPaneTests: XCTestCase {
     "horizontal" : {"placement" : "left", "width" : 300, "minHeight" : null}}
 }, {
   "alignment" : {
-    "vertical" : {"placement" : "top", "height" : 100}}
+    "vertical" : {"placement" : "top", "height" : 100}},
+  "customJSFilename": "script.js"
 }, {
   "alignment" : {
     "vertical" : {"placement" : "bottom", "height" : 200}}
@@ -25,22 +26,26 @@ final class AlfredExtraPaneTests: XCTestCase {
       AlfredExtraPane.PaneConfig(
         alignment: .horizontal(placement: .right, width: 300, minHeight: 400),
         customUserAgent: "agent of S.H.I.E.L.D.",
-        customCSSFilename: nil
+        customCSSFilename: nil,
+        customJSFilename: nil
       ),
       AlfredExtraPane.PaneConfig(
         alignment: .horizontal(placement: .left, width: 300, minHeight: nil),
         customUserAgent: nil,
-        customCSSFilename: "style.css"
+        customCSSFilename: "style.css",
+        customJSFilename: nil
       ),
       AlfredExtraPane.PaneConfig(
         alignment: .vertical(placement: .top, height: 100),
         customUserAgent: nil,
-        customCSSFilename: nil
+        customCSSFilename: nil,
+        customJSFilename: "script.js"
       ),
       AlfredExtraPane.PaneConfig(
         alignment: .vertical(placement: .bottom, height: 200),
         customUserAgent: nil,
-        customCSSFilename: nil
+        customCSSFilename: nil,
+        customJSFilename: nil
       )
     ]
     let decoded = try! JSONDecoder().decode(

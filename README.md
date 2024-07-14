@@ -104,6 +104,9 @@ Configurable parameters are:
  - `customCSSFilename` (optional): Name of the CSS file to be loaded
    in the pane. The file should be in the same directory as the JSON
    config file.
+ - `customJSFilename` (optional): Name of the JavaScript file to be loaded
+   in the pane. The file should be in the same directory as the JSON
+   config file.
 
 Here's an example with four panes configured:
 ```json

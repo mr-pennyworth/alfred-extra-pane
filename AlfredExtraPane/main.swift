@@ -30,7 +30,8 @@ let globalConfigFile: URL = {
   let defaultConfig = PaneConfig(
     alignment: .horizontal(placement: .right, width: 300, minHeight: 400),
     customUserAgent: nil,
-    customCSSFilename: nil
+    customCSSFilename: nil,
+    customJSFilename: nil
   )
   if !fs.fileExists(atPath: conf.path) {
     write([defaultConfig], to: conf)

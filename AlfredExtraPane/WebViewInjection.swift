@@ -17,7 +17,7 @@ private func injecterJS(_ cssString: String) -> String {
   """
 }
 
-class InjectedCSSWKWebView: WKWebView, WKScriptMessageHandler {
+class InjectedWKWebView: WKWebView, WKScriptMessageHandler {
   // This is required because we're subclassing WKWebView,
   // and has nothing to do with the CSS injection.
   required init?(coder: NSCoder) {
@@ -27,12 +27,14 @@ class InjectedCSSWKWebView: WKWebView, WKScriptMessageHandler {
   init(
     frame: CGRect,
     configuration: WKWebViewConfiguration,
-    cssString: String
+    cssString: String,
+    jsString: String
   ) {
-    log("will inject css: \(cssString)")
+    log("will inject CSS: \(cssString)")
+    log("will inject JS: \(jsString)")
 
     let userScript = WKUserScript(
-      source: injecterJS(cssString),
+      source: "\(jsString)\n\(injecterJS(cssString))",
       injectionTime: .atDocumentEnd,
       forMainFrameOnly: true
     )

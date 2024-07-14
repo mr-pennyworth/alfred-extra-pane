@@ -30,6 +30,7 @@ public struct PaneConfig: Codable, Equatable {
   let alignment: PanePosition
   let customUserAgent: String?
   let customCSSFilename: String?
+  let customJSFilename: String?
 }
 
 class Pane {
@@ -232,10 +233,22 @@ func makeWebView(_ workflowPaneConfig: WorkflowPaneConfig) -> WKWebView {
     }
   }
 
-  let webView = InjectedCSSWKWebView(
+  var jsString = ""
+  if let wfJSFilename = workflowPaneConfig.paneConfig.customJSFilename {
+    let wfJSFile =
+      workflowPaneConfig.dir().appendingPathComponent(wfJSFilename)
+    if let wfJSString = try? String(contentsOf: wfJSFile) {
+      jsString = wfJSString
+    } else {
+      log("Failed to read custom JS file: \(wfJSFile)")
+    }
+  }
+
+  let webView = InjectedWKWebView(
     frame: .zero,
     configuration: conf,
-    cssString: cssString
+    cssString: cssString,
+    jsString: jsString
   )
   if let userAgent = workflowPaneConfig.paneConfig.customUserAgent {
     webView.customUserAgent = userAgent
