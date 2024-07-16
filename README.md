@@ -468,3 +468,6 @@ Add the CSS file to the JSON config:
 
 Here's the result:
 ![](media/tutorial-images/imagine-final.png)
+
+The resultant workflow is hosted at
+[`mr-pennyworth/alfred-meta-ai-flash-imagine`](https://github.com/mr-pennyworth/alfred-meta-ai-flash-imagine).
