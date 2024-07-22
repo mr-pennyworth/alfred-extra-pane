@@ -15,7 +15,8 @@ final class AlfredExtraPaneTests: XCTestCase {
 }, {
   "alignment" : {
     "vertical" : {"placement" : "top", "height" : 100}},
-  "customJSFilename": "script.js"
+  "customJSFilename": "script.js",
+  "mediaAutoplay": true
 }, {
   "alignment" : {
     "vertical" : {"placement" : "bottom", "height" : 200}},
@@ -32,21 +33,24 @@ final class AlfredExtraPaneTests: XCTestCase {
         customUserAgent: "agent of S.H.I.E.L.D.",
         customCSSFilename: nil,
         customJSFilename: nil,
-        staticPaneConfig: nil
+        staticPaneConfig: nil,
+        mediaAutoplay: nil
       ),
       AlfredExtraPane.PaneConfig(
         alignment: .horizontal(placement: .left, width: 300, minHeight: nil),
         customUserAgent: nil,
         customCSSFilename: "style.css",
         customJSFilename: nil,
-        staticPaneConfig: nil
+        staticPaneConfig: nil,
+        mediaAutoplay: nil
       ),
       AlfredExtraPane.PaneConfig(
         alignment: .vertical(placement: .top, height: 100),
         customUserAgent: nil,
         customCSSFilename: nil,
         customJSFilename: "script.js",
-        staticPaneConfig: nil
+        staticPaneConfig: nil,
+        mediaAutoplay: true
       ),
       AlfredExtraPane.PaneConfig(
         alignment: .vertical(placement: .bottom, height: 200),
@@ -56,7 +60,8 @@ final class AlfredExtraPaneTests: XCTestCase {
         staticPaneConfig: StaticPaneConfig(
           initURL: URL(string: "https://example.com")!,
           function: "render"
-        )
+        ),
+        mediaAutoplay: nil
       )
     ]
     let decoded = try! JSONDecoder().decode(

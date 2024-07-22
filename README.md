@@ -115,6 +115,9 @@ Configurable parameters are:
    send to the pane, and set the full path of this text file as the
    `quicklookurl`. The pane will execute the JavaScript function
    `jsFunctionName` with the contents of the text file as the argument.
+ - `mediaAutoplay` (optional): `true` or `false`. If not specified, the
+   default is `false`. If set to `true`, media elements in the pane will
+   autoplay, if the webpage has configured them to autoplay.
 
 Here's an example with four panes configured:
 ```json

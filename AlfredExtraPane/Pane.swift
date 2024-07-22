@@ -41,6 +41,7 @@ public struct PaneConfig: Codable, Equatable {
   let customCSSFilename: String?
   let customJSFilename: String?
   let staticPaneConfig: StaticPaneConfig?
+  let mediaAutoplay: Bool?
 }
 
 class Pane {
@@ -239,11 +240,9 @@ func makeWebView(_ workflowPaneConfig: WorkflowPaneConfig) -> WKWebView {
   let conf = WKWebViewConfiguration()
   conf.preferences.setValue(true, forKey: "developerExtrasEnabled")
 
-  // TODO: allow configuration from prefs.json
-  // we don't want the pane to autoplay audio from the loaded webpage.
-  // (ideally, we want to be able to configure it, but till then, the
-  // quick fix is to disable autoplay).
-  conf.mediaTypesRequiringUserActionForPlayback = .all
+  if workflowPaneConfig.paneConfig.mediaAutoplay != true {
+    conf.mediaTypesRequiringUserActionForPlayback = .all
+  }
 
   var cssString = Alfred.themeCSS
   if let wfCSSFilename = workflowPaneConfig.paneConfig.customCSSFilename {

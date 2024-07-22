@@ -32,7 +32,8 @@ let globalConfigFile: URL = {
     customUserAgent: nil,
     customCSSFilename: nil,
     customJSFilename: nil,
-    staticPaneConfig: nil
+    staticPaneConfig: nil,
+    mediaAutoplay: nil
   )
   if !fs.fileExists(atPath: conf.path) {
     write([defaultConfig], to: conf)
