@@ -12,6 +12,7 @@
 		D03EA8D725551E0700D3656E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03EA8D625551E0700D3656E /* Assets.xcassets */; };
 		D040E2422667A4FC00495B2D /* Alfred in Frameworks */ = {isa = PBXBuildFile; productRef = D040E2412667A4FC00495B2D /* Alfred */; };
 		D04F70D5255893B3008E17A4 /* NSColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04F70D4255893B3008E17A4 /* NSColorExtension.swift */; };
+		D07349462C541D6300F004C8 /* PanePosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07349452C541D6300F004C8 /* PanePosition.swift */; };
 		D07360EA2C3237F600739755 /* NSColorExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07360E92C3237F600739755 /* NSColorExtensionTests.swift */; };
 		D08B6EE5266F31790099EB36 /* Pane.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B6EE4266F31790099EB36 /* Pane.swift */; };
 		D08B6EE7266F9B520099EB36 /* PanePositionCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08B6EE6266F9B520099EB36 /* PanePositionCodable.swift */; };
@@ -60,6 +61,7 @@
 		D03EA8D625551E0700D3656E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D03EA8DB25551E0700D3656E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D04F70D4255893B3008E17A4 /* NSColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtension.swift; sourceTree = "<group>"; };
+		D07349452C541D6300F004C8 /* PanePosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanePosition.swift; sourceTree = "<group>"; };
 		D07360E92C3237F600739755 /* NSColorExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColorExtensionTests.swift; sourceTree = "<group>"; };
 		D08B6EE4266F31790099EB36 /* Pane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pane.swift; sourceTree = "<group>"; };
 		D08B6EE6266F9B520099EB36 /* PanePositionCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanePositionCodable.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				D04F70D4255893B3008E17A4 /* NSColorExtension.swift */,
 				D01646B9255AF27A00646F0C /* utils.swift */,
 				D08B6EE4266F31790099EB36 /* Pane.swift */,
+				D07349452C541D6300F004C8 /* PanePosition.swift */,
 				D08B6EE6266F9B520099EB36 /* PanePositionCodable.swift */,
 				D0FCE9402C40049200F5006C /* Menu.swift */,
 				D0FCE9422C400A7600F5006C /* WebViewInjection.swift */,
@@ -257,6 +260,7 @@
 				D04F70D5255893B3008E17A4 /* NSColorExtension.swift in Sources */,
 				D08B6EE7266F9B520099EB36 /* PanePositionCodable.swift in Sources */,
 				D0FCE9432C400A7600F5006C /* WebViewInjection.swift in Sources */,
+				D07349462C541D6300F004C8 /* PanePosition.swift in Sources */,
 				D01646BA255AF27A00646F0C /* utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,7 +413,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.2.1;
+				MARKETING_VERSION = 0.2.2;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane;
@@ -430,7 +434,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.2.1;
+				MARKETING_VERSION = 0.2.2;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane;

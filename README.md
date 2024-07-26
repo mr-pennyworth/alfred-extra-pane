@@ -95,11 +95,23 @@ Configurable parameters are:
  - `alignment` (required):
     - `horizontal`
        - `placement`: `left` or `right`
-       - `width`: width of the pane
-       - `minHeight`: minimum height of the pane
+       - `width`: width of the pane. If the width is so large that the
+         pane doesn't fit on the screen, it is automatically reduced so
+         that the pane fills the entire horizontal space between the
+         Alfred window and the edge of the screen.
+       - `minHeight` (optional): minimum height of the pane. If not
+         specified, the height of the pane is always same as the height
+         of the Alfred window. 
     - `vertical`
        - `placement`: `top` or `bottom`
-       - `height`: height of the pane
+       - `height`: height of the pane. If the height is so large that the
+         pane doesn't fit on the screen, it is automatically reduced so
+         that the pane fills the entire vertical space between the
+         Alfred window and the edge of the screen.
+       - `width` (optional): width of the pane. If not specified, the
+         width of the pane is always same as the width of the Alfred
+         window. If the width is larger than the screen width, the pane
+         is reduced so that it fits the screen.
  - `customUserAgent` (optional): User-Agent string for HTTP(S) URLs
  - `customCSSFilename` (optional): Name of the CSS file to be loaded
    in the pane. The file should be in the same directory as the JSON

@@ -14,7 +14,7 @@ final class AlfredExtraPaneTests: XCTestCase {
     "horizontal" : {"placement" : "left", "width" : 300, "minHeight" : null}}
 }, {
   "alignment" : {
-    "vertical" : {"placement" : "top", "height" : 100}},
+    "vertical" : {"placement" : "top", "height" : 100, "width": 25}},
   "customJSFilename": "script.js",
   "mediaAutoplay": true
 }, {
@@ -45,7 +45,7 @@ final class AlfredExtraPaneTests: XCTestCase {
         mediaAutoplay: nil
       ),
       AlfredExtraPane.PaneConfig(
-        alignment: .vertical(placement: .top, height: 100),
+        alignment: .vertical(placement: .top, height: 100, width: 25),
         customUserAgent: nil,
         customCSSFilename: nil,
         customJSFilename: "script.js",
@@ -53,7 +53,7 @@ final class AlfredExtraPaneTests: XCTestCase {
         mediaAutoplay: true
       ),
       AlfredExtraPane.PaneConfig(
-        alignment: .vertical(placement: .bottom, height: 200),
+        alignment: .vertical(placement: .bottom, height: 200, width: nil),
         customUserAgent: nil,
         customCSSFilename: nil,
         customJSFilename: nil,

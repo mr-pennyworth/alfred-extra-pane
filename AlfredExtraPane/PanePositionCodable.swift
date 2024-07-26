@@ -1,7 +1,7 @@
 extension PanePosition: Codable {
   enum CodingKeys: CodingKey { case horizontal, vertical }
   enum HorizontalKeys: CodingKey { case placement, width, minHeight }
-  enum VerticalKeys: CodingKey { case placement, height }
+  enum VerticalKeys: CodingKey { case placement, height, width }
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -18,7 +18,8 @@ extension PanePosition: Codable {
         forKey: .placement
       )
       let height = try nested.decode(Int.self, forKey: .height)
-      self = .vertical(placement: placement, height: height)
+      let width = try? nested.decode(Int.self, forKey: .width)
+      self = .vertical(placement: placement, height: height, width: width)
     case .horizontal:
       let nested = try container.nestedContainer(
         keyedBy: HorizontalKeys.self,
@@ -50,13 +51,14 @@ extension PanePosition: Codable {
     var container = encoder.container(keyedBy: CodingKeys.self)
 
     switch self {
-    case .vertical(let position, let height):
+    case .vertical(let position, let height, let width):
       var nested = container.nestedContainer(
         keyedBy: VerticalKeys.self,
         forKey: .vertical
       )
       try nested.encode(position, forKey: .placement)
       try nested.encode(height, forKey: .height)
+      try nested.encode(width, forKey: .width)
     case .horizontal(let position, let width, let minHeight):
       var nested = container.nestedContainer(
         keyedBy: HorizontalKeys.self,
