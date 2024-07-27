@@ -146,9 +146,9 @@ func makeWindow() -> NSWindow {
     screen: NSScreen.main!
   )
   window.backgroundColor = .clear
-  window.level = .floating
+  window.level = .screenSaver
   window.collectionBehavior = [
-    .canJoinAllSpaces, .stationary, .fullScreenAuxiliary
+    .moveToActiveSpace, .stationary, .fullScreenAuxiliary
   ]
 
   // weird: without the following line
