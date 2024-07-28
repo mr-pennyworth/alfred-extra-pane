@@ -61,6 +61,7 @@ class Pane {
 
     Alfred.onHide { self.hide() }
     Alfred.onFrameChange { self.alfredFrame = $0 }
+    Alfred.inActionsView { self.hide() }
   }
 
   lazy var isGlobal: Bool = { self.workflowUID == nil }()
