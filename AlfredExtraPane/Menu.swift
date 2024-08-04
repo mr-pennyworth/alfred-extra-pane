@@ -76,7 +76,7 @@ extension AppDelegate {
   @objc func restart() {
     let task = Process()
     task.launchPath = "/usr/bin/open"
-    task.arguments = [Bundle.main.bundlePath]
+    task.arguments = ["-n", Bundle.main.bundlePath]
     task.launch()
     NSApplication.shared.terminate(nil)
   }
