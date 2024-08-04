@@ -9,9 +9,10 @@ private let cssInjectedMessageName = "cssInjected"
 /// The only way is to inject a <style> tag into the document by executing
 /// JS in the webview.
 private func injecterJS(_ cssString: String) -> String {
-  """
+  let escapedCssString = cssString.replacingOccurrences(of: "\\", with: "\\\\")
+  return """
   var style = document.createElement('style');
-  style.innerHTML = `\(cssString)`;
+  style.innerHTML = `\(escapedCssString)`;
   document.head.appendChild(style);
   window.webkit.messageHandlers.\(cssInjectedMessageName).postMessage('done');
   """
