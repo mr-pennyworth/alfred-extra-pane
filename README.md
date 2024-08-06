@@ -78,6 +78,10 @@ curl -sL https://raw.githubusercontent.com/mr-pennyworth/alfred-extra-pane/main/
  - The warning dialog is different this time. It now allows to open the app.
    Click `Open`: ![](media/install-attempt-2-result.png)
 
+## Features
+ - To open a link displayed in the pane in the default browser, hold down
+   the command key (`⌘`) and click on the link.
+
 ## Configuration
 The global pane(s) can be configured by editing
 `{/path/to}/Alfred.alfredpreferences/preferences/mr.pennyworth.AlfredExtraPane/config.json`.

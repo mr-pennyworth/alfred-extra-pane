@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D011BDA02C62557400EBF4A0 /* DefaultBrowserLinkOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = D011BD9F2C62557400EBF4A0 /* DefaultBrowserLinkOpener.swift */; };
 		D01646BA255AF27A00646F0C /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01646B9255AF27A00646F0C /* utils.swift */; };
 		D03EA8D325551E0400D3656E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EA8D225551E0400D3656E /* main.swift */; };
 		D03EA8D725551E0700D3656E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03EA8D625551E0700D3656E /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D011BD9F2C62557400EBF4A0 /* DefaultBrowserLinkOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultBrowserLinkOpener.swift; sourceTree = "<group>"; };
 		D01646B9255AF27A00646F0C /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		D03EA8CF25551E0400D3656E /* AlfredExtraPane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlfredExtraPane.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03EA8D225551E0400D3656E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				D08B6EE6266F9B520099EB36 /* PanePositionCodable.swift */,
 				D0FCE9402C40049200F5006C /* Menu.swift */,
 				D0FCE9422C400A7600F5006C /* WebViewInjection.swift */,
+				D011BD9F2C62557400EBF4A0 /* DefaultBrowserLinkOpener.swift */,
 			);
 			path = AlfredExtraPane;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				D03EA8D325551E0400D3656E /* main.swift in Sources */,
 				D08B6EE5266F31790099EB36 /* Pane.swift in Sources */,
 				D04F70D5255893B3008E17A4 /* NSColorExtension.swift in Sources */,
+				D011BDA02C62557400EBF4A0 /* DefaultBrowserLinkOpener.swift in Sources */,
 				D08B6EE7266F9B520099EB36 /* PanePositionCodable.swift in Sources */,
 				D0FCE9432C400A7600F5006C /* WebViewInjection.swift in Sources */,
 				D07349462C541D6300F004C8 /* PanePosition.swift in Sources */,
@@ -413,7 +417,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.2.6;
+				MARKETING_VERSION = 0.2.7;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane;
@@ -434,7 +438,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.2.6;
+				MARKETING_VERSION = 0.2.7;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane;

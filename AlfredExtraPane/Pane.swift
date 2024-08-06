@@ -44,6 +44,7 @@ class Pane {
   let window: NSWindow = makeWindow()
   let margin: CGFloat = 5
 
+  private var webViewNavigationDelegate = DefaultBrowserLinkOpener()
   private lazy var webView: WKWebView = {
     makeWebView(
       WorkflowPaneConfig(paneConfig: config, workflowUID: workflowUID)
@@ -54,6 +55,7 @@ class Pane {
     self.config = workflowPaneConfig.paneConfig
     self.workflowUID = workflowPaneConfig.workflowUID
     window.contentView!.addSubview(webView)
+    webView.navigationDelegate = webViewNavigationDelegate
 
     if let staticConf = self.config.staticPaneConfig {
       webView.load(URLRequest(url: staticConf.initURL))
