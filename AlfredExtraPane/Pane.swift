@@ -56,6 +56,7 @@ class Pane {
     self.workflowUID = workflowPaneConfig.workflowUID
     window.contentView!.addSubview(webView)
     webView.navigationDelegate = webViewNavigationDelegate
+    webView.allowsMagnification = true
 
     if let staticConf = self.config.staticPaneConfig {
       webView.load(URLRequest(url: staticConf.initURL))
