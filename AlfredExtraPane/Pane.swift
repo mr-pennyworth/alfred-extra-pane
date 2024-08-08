@@ -84,7 +84,7 @@ class Pane {
         log("failed to read '\(url)' as text file")
       }
     } else if url.isFileURL {
-      if url.absoluteString.hasSuffix(".html") {
+      if url.path.hasSuffix(".html") {
         let dir = url.deletingLastPathComponent()
         webView.loadFileURL(url, allowingReadAccessTo: dir)
       } else {
