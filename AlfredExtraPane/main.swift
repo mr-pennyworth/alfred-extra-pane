@@ -72,6 +72,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     dump(confs)
     panes = confs.map { Pane(workflowPaneConfig: $0) }
     Alfred.onItemSelect { item in
+      // Every time the selection changes, the newly selected item
+      // could be from the same workflow as the previously selected item,
+      // or from a different workflow. In the latter case, we need to hide
+      // panes specific to the previously selected item's workflow.
+      //
+      // Instead of that, we hide all panes, and then render the panes
+      // that match the newly selected item's workflow. If this causes too
+      // much flicker, we can optimize this later.
+      self.panes.forEach({ $0.hide() })
+
       // First, render panes that have exact match with workflowUID.
       // Then, if no exact match is found, render the wildcard panes.
       [
