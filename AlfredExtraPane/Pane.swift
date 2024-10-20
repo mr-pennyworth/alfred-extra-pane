@@ -150,7 +150,7 @@ func makeWindow() -> NSWindow {
     screen: NSScreen.main!
   )
   window.backgroundColor = .clear
-  window.level = .screenSaver
+  window.level = .modalPanel
   window.collectionBehavior = [
     .moveToActiveSpace, .stationary, .fullScreenAuxiliary
   ]
