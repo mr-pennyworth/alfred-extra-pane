@@ -150,7 +150,12 @@ func makeWindow() -> NSWindow {
     screen: NSScreen.main!
   )
   window.backgroundColor = .clear
-  window.level = .screenSaver
+  // We want quicklook windows to appear above the pane.
+  // We also want iTerm hotkey window to appear below the pane.
+  // Tried .modalPanel and that doesn't work (iTerm appears on top)
+  // .mainMenu seems to work
+  // https://jameshfisher.com/2020/08/03/what-is-the-order-of-nswindow-levels/
+  window.level = .mainMenu
   window.collectionBehavior = [
     .moveToActiveSpace, .stationary, .fullScreenAuxiliary
   ]
