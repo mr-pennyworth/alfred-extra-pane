@@ -5,7 +5,7 @@ on: push
 jobs:
   build-and-release:
     name: Build AlfredExtraPane and release
-    runs-on: macos-13
+    runs-on: macos-latest
     steps:
 
       - name: Checkout code
@@ -14,7 +14,7 @@ jobs:
           fetch-depth: 0  # Don't shallow-copy the repo. Need all the tags.
 
       - name: Select Xcode
-        run: sudo xcode-select -switch /Applications/Xcode_15.2.app
+        run: sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
 
       - name: Xcode version
         run: /usr/bin/xcodebuild -version
@@ -58,7 +58,26 @@ jobs:
         # Don't code sign as sparkle complains that the signature is corrupt.
         # At this moment, we don't see any value in figuring out how exactly
         # the code signature is corrupt.
-        run: xcodebuild -project AlfredExtraPane.xcodeproj -configuration Release -scheme AlfredExtraPane -derivedDataPath DerivedData clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+        run: |
+          xcodebuild \
+            -project AlfredExtraPane.xcodeproj \
+            -configuration Release \
+            -scheme AlfredExtraPane \
+            -derivedDataPath DerivedData \
+            clean build \
+            ARCHS="arm64 x86_64" \
+            ONLY_ACTIVE_ARCH=NO \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO
+
+      - name: Verify Universal Binary
+        if: env.PREVIOUS_TAG != env.APP_VERSION
+        run: |
+          BIN="DerivedData/Build/Products/Release/AlfredExtraPane.app/Contents/MacOS/AlfredExtraPane"
+          lipo -info "$BIN"
+          lipo -info "$BIN" | grep -q "arm64"
+          lipo -info "$BIN" | grep -q "x86_64"
 
       - name: Copy Built App
         if: env.PREVIOUS_TAG != env.APP_VERSION
