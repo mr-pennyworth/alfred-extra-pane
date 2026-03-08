@@ -123,7 +123,18 @@ let cornerRadius =
 /// the same time, we want the user to be able to click on the window so that
 /// it doesn't vanish on Alfred's disappearance.
 class ExtraPaneWindow: NSWindow {
-  override var canBecomeKey: Bool { true }
+  override var canBecomeKey: Bool {
+    // Gate key focus to explicit click interactions in this pane.
+    // This prevents the pane from stealing focus due to non-click events
+    // (for example while Alfred is still receiving keyboard input).
+    guard let event = NSApp.currentEvent else { return false }
+    switch event.type {
+    case .leftMouseDown, .rightMouseDown, .otherMouseDown:
+      return event.window == self
+    default:
+      return false
+    }
+  }
 
   // When the window rendering is triggered due to Alfred's quicklookurl, we
   // display the window, without making it the key window. In this case, the
