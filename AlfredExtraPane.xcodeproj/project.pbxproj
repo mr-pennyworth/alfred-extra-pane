@@ -417,7 +417,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.2.12;
+				MARKETING_VERSION = 0.2.13;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane;
@@ -438,7 +438,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 0.2.12;
+				MARKETING_VERSION = 0.2.13;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = mr.pennyworth.AlfredExtraPane;
@@ -530,7 +530,7 @@
 			repositoryURL = "https://github.com/mr-pennyworth/AlfredSwift";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.9;
+				minimumVersion = 0.1.13;
 			};
 		};
 		D0E764262C3C1E6D00E662F3 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
