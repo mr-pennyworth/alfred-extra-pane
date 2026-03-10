@@ -97,10 +97,45 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 }
 
+func setupMainMenu() {
+  let mainMenu = NSMenu()
+  let editMenuItem = NSMenuItem(title: "Edit", action: nil, keyEquivalent: "")
+  let editMenu = NSMenu(title: "Edit")
+
+  let cutItem = NSMenuItem(
+    title: "Cut",
+    action: #selector(NSText.cut(_:)),
+    keyEquivalent: "x"
+  )
+  cutItem.keyEquivalentModifierMask = [.command]
+
+  let copyItem = NSMenuItem(
+    title: "Copy",
+    action: #selector(NSText.copy(_:)),
+    keyEquivalent: "c"
+  )
+  copyItem.keyEquivalentModifierMask = [.command]
+
+  let pasteItem = NSMenuItem(
+    title: "Paste",
+    action: #selector(NSText.paste(_:)),
+    keyEquivalent: "v"
+  )
+  pasteItem.keyEquivalentModifierMask = [.command]
+
+  editMenu.addItem(cutItem)
+  editMenu.addItem(copyItem)
+  editMenu.addItem(pasteItem)
+  editMenuItem.submenu = editMenu
+  mainMenu.addItem(editMenuItem)
+  NSApp.mainMenu = mainMenu
+}
+
 autoreleasepool {
   let app = NSApplication.shared
   let delegate = AppDelegate()
   log("\(delegate.panes)")
+  setupMainMenu()
   app.setActivationPolicy(.accessory)
   app.delegate = delegate
   app.run()
